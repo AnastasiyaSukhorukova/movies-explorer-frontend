@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./Promo.css";
+import NavTab from "../NavTab/NavTab";
 
 function Promo() {
         return (
@@ -14,6 +15,7 @@ function Promo() {
                         Листайте ниже, чтобы узнать больше про этот проект и его создателя.
                     </p>
                 </div>
+                <NavTab/>
             </section>
         );
 }
