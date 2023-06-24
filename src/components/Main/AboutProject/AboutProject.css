@@ -81,12 +81,13 @@
 
 .project-duration__time_grey {
   margin: 0;
-  background-color: #F2F2F2;
+  background-color: #303030;
   padding: 9px 0px;
   text-align: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  color: #fff;
 }
 
 .project-duration__title {

@@ -3,7 +3,7 @@
 import React from "react";
 import "./AboutMe.css";
 import Avatar from "../../../images/avatar.png";
-// import Portfolio from "../Portfolio/Portfolio";
+import Portfolio from "../Portfolio/Portfolio";
 
 function AboutMe() {
   return (
@@ -21,7 +21,7 @@ function AboutMe() {
         </div>
         <img className="aboutme__avatar" src={Avatar} alt="Сухорукова Анастасия"></img>
       </div>
-      {/* <Portfolio/> */}
+      <Portfolio/>
     </section>
   );
 }
