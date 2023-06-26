@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
+import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
-// import HederAuth from "../HeaderAuth/HederAuth";
+// import HeaderAuth from "../HeaderAuth/HeaderAuth";
 // import { CurrentUserContext } from "../App/App";
 
 function Header() {
@@ -10,9 +11,8 @@ function Header() {
 
   return (
     <>
-      {/* {logedId && <HederAuth />} */}
-
-      {/* {!logedId && ( */}
+      {/* {logedId} && <HeaderAuth /> */}
+       {/* {!logedId} &&  */}
         <header className="header">
           <div className="header__container">
             <Link to="/">
@@ -28,7 +28,6 @@ function Header() {
             </div>
           </div>
         </header>
-      {/* )} */}
     </>
   );
 }

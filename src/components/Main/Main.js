@@ -16,10 +16,10 @@ function Main() {
         <div className="main">
             <Header />
             <main>
-                <Promo/>
-                <AboutProject/>
-                <Techs/>
-                <AboutMe/>
+              <Promo/>
+              <AboutProject/>
+              <Techs/>
+              <AboutMe/>
             </main>
             <Footer/>
         </div>
