@@ -3,16 +3,15 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
-// import HeaderAuth from "../HeaderAuth/HeaderAuth";
-// import { CurrentUserContext } from "../App/App";
+import HeaderAuth from "../HeaderAuth/HeaderAuth";
+// import { useLocation } from 'react-router-dom';
 
-function Header() {
-  // const { logedId } = useContext(CurrentUserContext);
+const Header = ({ isLogged }) => {
 
   return (
     <>
-      {/* {logedId} && <HeaderAuth /> */}
-       {/* {!logedId} &&  */}
+        {isLogged && <HeaderAuth />}
+        {!isLogged && (
         <header className="header">
           <div className="header__container">
             <Link to="/">
@@ -28,6 +27,7 @@ function Header() {
             </div>
           </div>
         </header>
+        )}
     </>
   );
 }
