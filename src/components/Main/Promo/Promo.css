@@ -30,6 +30,7 @@
     font-size: 13px;
     line-height: 16px;
     color: #FFFFFF;
+    opacity: 50%;
 }
 
 @media screen and (max-width: 769px) {

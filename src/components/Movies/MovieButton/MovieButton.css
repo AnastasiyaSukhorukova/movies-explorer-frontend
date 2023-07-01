@@ -1,0 +1,17 @@
+.movie-card__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 25px;
+  background-color: #313131;
+  border-radius: 36px;
+  border: 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  width: 24px;
+  height: 24px;
+}
+
+.movie-card__button:hover {
+  opacity: .8;
+}

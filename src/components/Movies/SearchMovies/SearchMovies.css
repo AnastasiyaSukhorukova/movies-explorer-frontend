@@ -1,6 +1,7 @@
 .searchmovies {
-  padding: 70px 70px 0;
+  padding: 80px 70px 0;
   background-color: #202020;
+  border-bottom: 1px solid #2F2F2F;
 }
 
 .searchmovies__block {
@@ -9,7 +10,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #2F2F2F;
   background-color: #202020;
 }
 
@@ -68,7 +68,7 @@
   gap: 14px;
   margin: auto;
   justify-content: center;
-  padding: 30px 0 49px; 
+  padding: 31px 0 40px;
 }
 
 .searchmovies__checkbox-input {
@@ -109,8 +109,12 @@
 }
 
 @media screen and (max-width: 769px) {
+  
+  .searchmovies {
+    padding: 80px 30px 0;
+  }
+
   .searchmovies__block {
-    padding: 86px 30px 15px 30px;
     max-width: 708px;
     margin: auto;
   }
@@ -121,7 +125,7 @@
 
   .searchmovies__switch {
     max-width: 708px;
-    padding: 30px 0 62px;
+    padding: 31px 0 40px;
   }
 }
 

@@ -1,23 +1,39 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import { useEffect, useState } from 'react';
 import SearchMovies from "../Movies/SearchMovies/SearchMovies";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Preloader from "../Movies/Preloader/Preloader";
+import { apiRequestEmulation } from '../../utils/utils';
+import { savedMoviesData } from '../../constants/saveMoviesData';
 
 function SavedMovies() {
+
+  const [isLoadind, setIsLoading] = useState(false);
+
+  // Эмилируем загрузку фильмов
+  useEffect(() => {
+    setIsLoading(true);
+    apiRequestEmulation()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  }, [])
   
   return(
-     <>
-     <Header/>
        <main className="main__box">
          <SearchMovies/>
-         {<Preloader />}
-         {<MoviesCardList />}
+         {isLoadind
+        ? <Preloader />
+        : <MoviesCardList moviesData={savedMoviesData}/>
+      }
          {<button className="movies__button">Еще</button>}
        </main>
-     <Footer/>
-   </>
   )
 
 }

@@ -42,7 +42,7 @@ function App() {
           <Routes>
             {/* по роуту / отображается страница «О проекте»; */}
             <Route exact path="/" element={
-            <Layout isLogged={isLogged}>
+            <Layout isLogged={!isLogged}>
               <Main />
             </Layout>} />
 

@@ -4,12 +4,16 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+const MoviesCardList = ({ moviesData }) => {
   
   return(
     <section className="movieCardList">
       <div className="movieCardList__box">
-            <MoviesCard />
+      {
+          moviesData.map(({ _id, ...movie}) => (
+            <MoviesCard key={_id} movieData={movie} />
+          ))
+        }
       </div>
     </section>
   );

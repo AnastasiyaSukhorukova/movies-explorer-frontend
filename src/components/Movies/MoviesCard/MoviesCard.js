@@ -1,191 +1,47 @@
+import { useLocation } from 'react-router-dom';
+import { convertDuration } from '../../../utils/utils';
+import MovieButton from '../MovieButton/MovieButton';
 import React from "react";
 import "./MoviesCard.css";
 
-function MoviesCard() {
+const MoviesCard = ({ movieData }) => {
+
+  const { pathname } = useLocation();
+
+  const saveMovieHandler = () => {
+    console.log('Фильм сохранен');
+  }
+
+  const deleteMovieHandler = () => {
+    console.log('Фильм удален');
+  }
 
   return(
-    <> 
     <div className="moviesCard">
       <a 
-        href="trailer"
+        href={movieData.trailerLink}
         target="_blank"
         className="card__link"
         rel="noreferrer"
       >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
+        <img className="moviesCard__image" src={movieData.image} alt={movieData.nameRU} />
+        </a>
       <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
+        <h2 className="moviesCard__title">
+          {movieData.nameRU}
+        </h2>
 
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
+            <MovieButton
+              onClickHandler={pathname === "/movies" ? saveMovieHandler : deleteMovieHandler}
+              className={ pathname === "/movies" ? "moviesCard__button-del" : "moviesCard__button-save"}
+            >
+            </MovieButton>
 
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
+        </div>
+        <span className="moviesCard__duration">
+          {convertDuration(+movieData.duration)}
+        </span>
     </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-
-    <div className="moviesCard">
-      <a 
-        href="rffv"
-        target="_blank"
-        className="card__link"
-        rel="noreferrer"
-      >
-        <img className="moviesCard__image" src="https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg" alt='аватар' />
-      </a>
-      <div className="moviesCard__container">
-          <h2 className="moviesCard__title">Аватар</h2>
-      </div>
-      <p className="moviesCard__duration">2ч 42м</p>
-    </div>
-    
-    </>
   );
 }
 

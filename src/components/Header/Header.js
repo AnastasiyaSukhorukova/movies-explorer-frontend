@@ -4,14 +4,13 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
-// import { useLocation } from 'react-router-dom';
 
 const Header = ({ isLogged }) => {
 
   return (
     <>
-        {isLogged && <HeaderAuth />}
-        {!isLogged && (
+        {!isLogged && <HeaderAuth />}
+        {isLogged && (
         <header className="header">
           <div className="header__container">
             <Link to="/">
