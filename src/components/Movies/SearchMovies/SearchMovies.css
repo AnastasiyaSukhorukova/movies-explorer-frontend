@@ -5,10 +5,12 @@
 }
 
 .searchmovies__block {
-  max-height: 48px;
+  max-height: 46px;
+  max-width: 1140px;
   position: relative;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   align-items: center;
   background-color: #202020;
 }
@@ -17,11 +19,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .searchmovies__input {
   height: 48px;
-  width: 1060px;
+  width: 100%;
   padding: 15px 0 15px 22px;
   box-sizing: border-box;
   font-weight: 500;
@@ -115,12 +118,7 @@
   }
 
   .searchmovies__block {
-    max-width: 708px;
     margin: auto;
-  }
-
-  .searchmovies__input {
-    width: 628px;
   }
 
   .searchmovies__switch {
@@ -134,14 +132,7 @@
     padding: 98px 14px 0;
   }
 
-  .searchmovies__block {
-    padding: 0;
-    max-width: 292px;
-    margin: auto;
-  }
-
   .searchmovies__input {
-    width: 212px;
     font-size: 18px;
     line-height: 22px;
     text-align: left;

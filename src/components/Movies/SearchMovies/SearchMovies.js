@@ -3,7 +3,7 @@
 import React from "react";
 import "./SearchMovies.css"
 
-function SearchForm(props) {
+function SearchMovies(props) {
   
   return (
       <form noValidate className="searchmovies" onSubmit={(e)=>{e.preventDefault()}}>
@@ -29,4 +29,4 @@ function SearchForm(props) {
   );
 }
 
-export default SearchForm;
+export default SearchMovies;

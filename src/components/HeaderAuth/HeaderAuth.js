@@ -3,7 +3,7 @@ import "./HeaderAuth.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import account from "../../images/account.svg"
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Navigation from "../Navigation/Navigation";
 
 function HederAuth() {
 
@@ -26,7 +26,7 @@ function HederAuth() {
             </div>
           </div>
         <div>
-        <BurgerMenu />
+        <Navigation />
         <div className="header__button-container">
         <Link to="/profile" className="header__button-account">
             Аккаунт

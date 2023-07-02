@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./BurgerMenu.css";
+import "./Navigation.css";
 import account from "../../images/account.svg"
 import burgermenuOpen from "../../images/burgermenu-open.svg";
 import burgermenuButtonClose from "../../images/burgermenu-close.svg";
 import { Link } from "react-router-dom";
 
-function BurgerMenu() {
+function Navigation() {
 
   const [menuIsActive, setMenuIsActive] = useState(false)
 
@@ -47,4 +47,4 @@ function BurgerMenu() {
   );
 }
 
-export default BurgerMenu;
+export default Navigation;
