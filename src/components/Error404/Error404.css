@@ -12,7 +12,7 @@
   text-align: center;
   color: #fff;
   margin: 246px 0 5px;
-  text-align: center;
+  letter-spacing: 5px;
 }
 
 .error404__text {
@@ -22,7 +22,6 @@
   text-align: center;
   color: #fff;
   margin: 0 0 184px;
-  text-align: center;
 }
 
 .error404__button {
@@ -38,4 +37,10 @@
 
 .error404__button:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 825px) {
+  .error404__title {
+    margin-top: 408px;
+  }
 }

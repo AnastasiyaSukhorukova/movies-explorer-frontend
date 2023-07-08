@@ -1,5 +1,5 @@
 .about-project {
-  padding: 110px 70px 110px 70px;
+  padding: 110px 70px 97px 70px;
   margin: auto;
   background-color: #202020;
 }
@@ -9,7 +9,7 @@
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
-  padding: 23px 0;
+  padding-bottom: 23px;
   margin: 0;
   border-bottom: 1px solid #fff;
 }
@@ -38,7 +38,6 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: -0.04em;
   margin: 0;
 }
 
@@ -48,6 +47,7 @@
   font-size: 14px;
   line-height: 20px;
   margin: 0;
+  letter-spacing: 0.7px;
 }
 
 .project-duration {

@@ -1,13 +1,14 @@
 .navtab {
-  padding-bottom: 75px;
   padding-left: 70px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  padding-bottom: 75px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navtab__button {
+.navtab__title {
+  display: flex;
   width: 129px;
   height: 36px;
   box-sizing: border-box;
@@ -17,9 +18,16 @@
   border-radius: 3px;
   cursor: pointer;
   transition: 0.4s;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.navtab__button:hover {
+.navtab__title:hover {
   opacity: 0.7;
 }
 

@@ -21,6 +21,11 @@
 .register__logo {
   width: 38px;
   height: 38px;
+  cursor: pointer;
+}
+
+.register__logo:hover {
+  opacity: 0.7;
 }
 
 .register__title {
@@ -30,7 +35,8 @@
   color: #fff;
   display: flex;
   margin: 0;
-  padding: 40px 0 40px 0;
+  padding: 38px 0 40px 0;
+  letter-spacing: 1.1px;
 }
 
 .register__form {
@@ -42,15 +48,17 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-bottom: 134px;
+  padding-bottom: 69px;
 }
 
 .register__name {
+  display: block;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
+  padding-bottom: 10px;
 }
 
 .register__email {
@@ -60,7 +68,8 @@
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
-  padding-top: 24px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .register__password {
@@ -70,56 +79,65 @@
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
-  padding-top: 24px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .register__input {
   display: flex;
   width: 100%;
   border: none;
-  padding: 5px 0 10px 0;
+  padding: 15px 0 15px 15px;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 13px;
+  line-height: 16px;
   background-color: #2F2F2F;
   color: #fff;
   align-items: center;
   outline: 0;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+}
+
+.register__input:focus {
+  outline: 1px solid #4285F4;
 }
 
 .error__register {
+  padding-top: 10px;
   color: #EE3465;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
+  letter-spacing: 0.7px;
 }
 
-.register__input:invalid {
-  border-bottom: 1px solid #EE3465;
+ .register__input-invalid {
+  /* border-bottom: 1px solid #EE3465; */
+  color: #EE3465;
+  letter-spacing: 3px;
 }
 
-.register__input:valid {
+/* .register__input:valid {
   border-bottom: 1px solid #2BE080;
-}
+}  */
 
 .register__button {
-  background-color: #2BE080;
+  background-color: #4285F4;
   border: none;
   border-radius: 3px;
   width: 100%;
   text-align: center;
-  margin: 0;
-  margin-bottom: 16px;
-  padding: 13px 0 15px 0;
+  padding: 13px 0 16px 0;
   cursor: pointer;
-  margin: 0;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+  letter-spacing: 0.8px;
 }
 
 .register__button:hover {
@@ -141,11 +159,13 @@
   text-align: center;
   color: #A0A0A0;
   padding-top: 16px;
+  letter-spacing: 0.8px;
 }
 
 .register__login {
   padding: 0 0 0 6px;
   color: #4285F4;
+  letter-spacing: 0.8px;
 }
 
 .register__login:hover {
@@ -155,6 +175,14 @@
 @media screen and (max-width: 769px){
   .register{
     padding: 232px 0 232px 0;
+  }
+
+  .register__title {
+    letter-spacing: 1.5px;
+  }
+
+  .register__input {
+    letter-spacing: 1.5px;
   }
 }
 

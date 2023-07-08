@@ -31,16 +31,17 @@
 
 .header__container_films {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
 }
 
 .header__button-films {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   color: #fff;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
 .header__button-films:hover {
@@ -49,8 +50,9 @@
 
 .header__button-savefilms {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
+  letter-spacing: 0.3px;
   text-align: right;
   color: #fff;
   text-decoration: none;
@@ -72,16 +74,25 @@
   text-decoration: none;
   width: 100px;
   height: 32px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
 }
 
 .header__button-image {
-  padding: 8px;
+  padding: 8px 7.25px;
   background-color: #313131;
-  border: 2px solid #313131;
   border-radius: 4px;
 }
 
 .header__button-account:hover {
+  opacity: 0.7;
+}
+
+.header__auth-logo {
+  cursor: pointer;
+}
+
+.header__auth-logo:hover {
   opacity: 0.7;
 }
 
@@ -98,13 +109,23 @@
     color: #fff;
   }
 
-  .header__button-container {
+  .header__display-none {
     display: none;
+  }
+
+  .header__button-account {
+    align-items: normal;
+    height: 30px;
+  }
+
+  .header__button-image {
+    max-height: 30px;
+    max-width: 26px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .header__container_films {
+  .header__container-films {
     display: none;
   }
 
@@ -116,7 +137,7 @@
     color: #fff;
   }
 
-  .header__button-container {
+  .header__display-none {
     display: none;
   }
 }

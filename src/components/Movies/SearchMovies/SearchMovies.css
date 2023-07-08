@@ -72,6 +72,11 @@
   margin: auto;
   justify-content: center;
   padding: 31px 0 40px;
+  cursor: pointer;
+}
+
+.searchmovies__switch:hover {
+  opacity: 0.7;
 }
 
 .searchmovies__checkbox-input {

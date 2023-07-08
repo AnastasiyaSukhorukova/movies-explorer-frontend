@@ -21,6 +21,11 @@
 .login__logo {
   width: 38px;
   height: 38px;
+  cursor: pointer;
+}
+
+.login__logo:hover {
+  opacity: 0.7;
 }
 
 .login__title {
@@ -43,15 +48,17 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-bottom: 221px;
+  padding-bottom: 179px;
 }
 
 .login__email {
+  display: block;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
+  padding-bottom: 10px;
 }
 
 .login__password {
@@ -62,13 +69,14 @@
   line-height: 12px;
   color: #A0A0A0;
   padding-top: 24px;
+  padding-bottom: 10px;
 }
 
 .login__input {
   display: flex;
   width: 100%;
   border: none;
-  padding: 5px 0 10px 0;
+  padding: 15px 0 15px 15px;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -77,15 +85,20 @@
   color: #fff;
   align-items: center;
   outline: 0;
+  border-radius: 8px;
 }
 
-.login__input:invalid {
+.login__input:focus {
+  outline: 1px solid #4285F4;
+}
+
+/* .login__input:invalid {
   border-bottom: 1px solid #EE3465;
 }
 
 .login__input:valid {
   border-bottom: 1px solid #2BE080;
-}
+} */
 
 .error__login {
   color: #EE3465;
@@ -96,7 +109,7 @@
 }
 
 .login__button {
-  background-color: #2BE080;
+  background-color: #4285F4;
   border: none;
   border-radius: 3px;
   width: 100%;
@@ -146,6 +159,15 @@
 @media screen and (max-width: 769px){
   .login{
     padding: 232px 0 232px 0;
+  }
+
+  .login__title {
+    padding-top: 38px;
+    letter-spacing: 1px;
+  }
+
+  .login__password {
+    padding-top: 20px;
   }
 }
 

@@ -16,11 +16,12 @@ function Register() {
 
         <h2 className="register__title">Добро пожаловать!</h2>
 
-        <form noValidate className="register__form" name="register-form" onSubmit={e=> e.preventDefault()}>
+        <form noValidate className="register__form" name="register-form">
           <div className="register__field">
           <label>
                   <label className="register__name">Имя</label>
-                  <input className="register__input" 
+                  <input 
+                        className="register__input"
                          type="text" 
                          name="name" 
                          placeholder="Введите Ваше Имя"
@@ -29,12 +30,14 @@ function Register() {
                          maxLength={30}
                          pattern="^[A-Za-zА-Яа-яЁё /s -]{4,30}"
                          required={true}
-                         value={'name'}
+                         value={'Виталий'}
                    />
+                   <span className="error__register" ></span>
               </label>
               <label>
                   <label className="register__email">E-mail</label>
-                  <input className="register__input" 
+                  <input 
+                        className="register__input"
                          type="email" 
                          name="email" 
                          placeholder="Введите Ваш E-mail"
@@ -43,12 +46,14 @@ function Register() {
                          required={true}
                          minLength={2}
                          maxLength={30}
-                         value={'email@mail.ru'}
+                         value={'pochta@yandex.ru'}
                   />
+                  <span className="error__register" ></span>
               </label>
               <label>
                   <label className="register__password">Пароль</label>
-                  <input className="register__input" 
+                  <input 
+                          className="register__input register__input-invalid"
                          type="password" 
                          name="password" 
                          placeholder="Введите Ваш Пароль"
@@ -56,13 +61,19 @@ function Register() {
                          minLength={4}
                          maxLength={8}
                          required={true}
+                         value={'••••••••••••••'}
                    />
+                   
               </label>
+              <span className="error__register" >{'Что-то пошло не так...'}</span>
           </div>
           <div className="register__button-box">
-              <button className="register__button" type="submit">Зарегистрироваться</button>
+              <button 
+              className="register__button"
+              type="submit">
+                Зарегистрироваться</button>
               <Link className="register__link" to="/signin">
-                  Ещё не зарегистрированы?
+                  Уже зарегистрированы?
                   <span className="register__login">Войти</span>
               </Link>
           </div>

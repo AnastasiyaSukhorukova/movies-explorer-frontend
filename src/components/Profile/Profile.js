@@ -41,6 +41,8 @@ const Profile = ({ onLogout }) => {
                         type='text'
                         name='name'
                         placeholder='Имя'
+                        minLength={2}
+                        maxLength={30}
                         value={user.name || ''}
                         onChange={handleChange}
                         required

@@ -2,7 +2,7 @@
 import '../App/App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import React, { createContext } from 'react';
+import React from 'react';
 
 import Main from '../Main/Main';
 import Login from '../Login/Login';
@@ -13,9 +13,6 @@ import Error404 from '../Error404/Error404';
 import Movies from '../Movies/Movies';
 import Header from '../Header/Header';
 import Layout from '../Layout/Layout';
-
-
-export const CurrentUserContext = createContext();
 
 function App() {
 
@@ -37,7 +34,6 @@ function App() {
   }
 
   return (
-      <CurrentUserContext.Provider>
         <div className='App'>
           <Routes>
             {/* по роуту / отображается страница «О проекте»; */}
@@ -89,7 +85,6 @@ function App() {
               <Route exact path="*" element={<Error404/>} />
             </Routes>
           </div>
-        </CurrentUserContext.Provider>
     );
 }
 

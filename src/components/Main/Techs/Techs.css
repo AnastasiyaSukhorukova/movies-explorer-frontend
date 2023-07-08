@@ -1,10 +1,11 @@
 .teshs {
   background-color: #272727;
   margin: 0;
+  padding: 0;
 }
 
 .techs__container{
-  padding: 110px 70px 110px 70px;
+  padding: 100px 70px 100px 70px;
   margin: auto;
   max-width: 1140px;
   display: flex;
@@ -20,7 +21,6 @@
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
-  letter-spacing: -0.04em;
   color: #fff;
   align-self: flex-start;
   border-bottom: 1px solid #DADADA;
@@ -33,7 +33,6 @@
   font-size: 50px;
   line-height: 58px;
   text-align: center;
-  letter-spacing: -0.04em;
   color: #fff;
 }
 
@@ -46,7 +45,6 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  letter-spacing: -0.04em;
   color: #fff;
 }
 
@@ -78,7 +76,11 @@
 @media screen and (max-width: 825px) {
   .techs__container {
     max-width: 668px;
-    padding: 90px 50px 90px 50px;
+    padding: 85px 50px 90px 50px;
+  }
+
+  .techs__title {
+    padding-bottom: 17px;
   }
 
   .techs__subtitle {
@@ -89,10 +91,12 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
+    padding-bottom: 83px;
   }
 
   .techs__cards {
     width: 668px;
+    justify-content: space-between;
   }
 
   .techs__item {
@@ -101,6 +105,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    letter-spacing: -0.05em;
   }
 }
 

@@ -16,7 +16,7 @@ function HederAuth() {
           <Link to="/" className="header__auth-logo">
             <img src={logo} alt="Логотип" />
           </Link>
-            <div className="header__container_films">
+            <div className="header__container-films">
               <Link to="/movies" className="header__button-films">
                 Фильмы
               </Link>
@@ -27,7 +27,7 @@ function HederAuth() {
           </div>
         <div>
         <Navigation />
-        <div className="header__button-container">
+        <div className="header__button-container header__display-none">
         <Link to="/profile" className="header__button-account">
             Аккаунт
             <img className="header__button-image" src={account} alt="аккаунт" />

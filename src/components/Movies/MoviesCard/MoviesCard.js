@@ -36,8 +36,8 @@ const MoviesCard = ({ movieData }) => {
                   {isSaved ? <img className="moviesCard__delete" alt="добавлено" src={saveButton}/> :
                       <img className="moviesCard__add" alt="добавить" src={saveFilmButton}/>}
               </button>}
-
         </div>
+        <div className="moviesCard__line"/>
         <span className="moviesCard__duration">
           {convertDuration(+movieData.duration)}
         </span>

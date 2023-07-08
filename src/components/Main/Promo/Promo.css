@@ -1,23 +1,24 @@
 .promo {
   background-image: url("../../../images/promo-logo.svg");
-  background-position: bottom 145px right 70px;
+  background-position: top 75px right 70px;
   background-repeat: no-repeat;
   background-color: #073042;
   max-width: 1280px;
 }
 
 .promo__container {
-  padding: 75px 0 207px;
+  padding: 75px 0 146px;
 }
 
 .promo__title {
     margin: 0;
-    padding-left: 70px ;
+    padding-left: 70px;
     max-width: 640px;
     color: #FFFFFF;
     font-weight: 400;
     font-size: 50px;
     line-height: 58px;
+    letter-spacing: 1px;
 }
 
 .promo__caption {
@@ -31,6 +32,7 @@
     line-height: 16px;
     color: #FFFFFF;
     opacity: 50%;
+    letter-spacing: 1px;
 }
 
 @media screen and (max-width: 769px) {
@@ -52,6 +54,7 @@
     margin: 417px auto 0;
     font-size: 40px;
     line-height: 50px;
+    letter-spacing: 2px;
   }
 
   .promo__caption {

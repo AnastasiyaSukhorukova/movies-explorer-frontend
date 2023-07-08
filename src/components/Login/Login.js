@@ -3,7 +3,12 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Login({onLogin}) {
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onLogin();
+  }
   
   return(
     <section className="login">
@@ -14,7 +19,7 @@ function Login() {
               </Link>
             </div>
         <h2 className="login__title">Рады видеть!</h2>
-        <form noValidate className="login__form" name="login-form" onSubmit={e=> e.preventDefault()}>
+        <form noValidate className="login__form" name="login-form" onSubmit={handleSubmit}>
           <div className="login__field">
               <label>
                   <span className="login__email">E-mail</span>
@@ -27,7 +32,7 @@ function Login() {
                          maxLength={30}
                          pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{2,30}$"
                          required={true}
-                         value={'email@mail.ru'}
+                         value={'pochta@yandex.ru'}
                   />
               </label>
               <label>
@@ -35,8 +40,7 @@ function Login() {
                   <input className="login__input" 
                          type="password"
                          name="password"
-                         autoComplete="off"
-                         placeholder="Введите Ваш Пароль" 
+                         autoComplete="off" 
                          minLength={4}
                          maxLength={8}
                          required={true}

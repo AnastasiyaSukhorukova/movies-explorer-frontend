@@ -5,6 +5,7 @@ import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Preloader from "../Movies/Preloader/Preloader";
 import { apiRequestEmulation } from '../../utils/utils';
 import { savedMoviesData } from '../../constants/saveMoviesData';
+import "./SavedMovies.css";
 
 function SavedMovies() {
 
@@ -26,13 +27,13 @@ function SavedMovies() {
   }, [])
   
   return(
-       <main className="main__box">
+       <main className="main__box main__savedMovies">
          <SearchMovies/>
          {isLoadind
         ? <Preloader />
         : <MoviesCardList moviesData={savedMoviesData}/>
       }
-         {<button className="movies__button">Еще</button>}
+         {/* {<button className="movies__button">Еще</button>} */}
        </main>
   )
 
