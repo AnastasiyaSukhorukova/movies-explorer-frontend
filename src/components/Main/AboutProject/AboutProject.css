@@ -4,7 +4,7 @@
   background-color: #202020;
 }
 
-.about__title {
+.about-project__title {
   color: #fff;
   font-weight: 400;
   font-size: 22px;
@@ -24,7 +24,6 @@
 }
 
 .project-block {
-  margin-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,7 +66,7 @@
   width: 912px;
 }
 
-.project-duration__time_green {
+.project-duration__time-green {
   background-color: #3DDC84;
   margin: 0;
   width: 100%;
@@ -79,7 +78,7 @@
   text-align: center;
 }
 
-.project-duration__time_grey {
+.project-duration__time-grey {
   margin: 0;
   background-color: #303030;
   padding: 9px 0px;
@@ -135,7 +134,7 @@
     max-width: 284px;
   }
 
-  .about__title {
+  .about-project__title {
     font-size: 18px;
     line-height: 22px;
     padding-bottom: 28px;

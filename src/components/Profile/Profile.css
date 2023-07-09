@@ -87,7 +87,7 @@
   padding-top: 220px;
 }
 
-.profile__button_edit {
+.profile__button_type_edit {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -101,15 +101,15 @@
   background-color: transparent;
 }
 
-.profile__button_edit:hover {
+.profile__button_type_edit:hover {
   opacity: 0.7;
 }
 
-.profile__button_edit:disabled {
+.profile__button_type_edit:disabled {
   opacity: 0.2;
 }
 
-.profile__button_signin {
+.profile__button_type_logout {
   border: none;
   font-style: normal;
   font-weight: 500;
@@ -122,8 +122,22 @@
   background-color: transparent;
 }
 
-.profile__button_signin:hover {
+.profile__button_type_logout:hover {
   opacity: 0.7;
+}
+
+.profile__submit {
+  width: 100%;
+  padding: 13px 0 15px;
+  margin: 220px auto 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 3px;
+  background-color: #3456F3;
+  border: 0;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
 }
 
 @media screen and (max-width: 769px) {

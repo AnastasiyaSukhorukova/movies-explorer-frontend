@@ -29,15 +29,15 @@ const Profile = ({ onLogout }) => {
 
   return(
     <>
-    <section className="profile">
+    <main className="profile">
       <div className='profile__content'>
-        <h2 className='profile__title'>{`Привет, ${user.name}!`}</h2>
+        <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
         <form className='profile__form' onSubmit={handleSubmit}>
             <fieldset className='profile__fieldset'>
                 <label className='profile__fields'>
                     <p className='profile__input-name'>Имя</p>
                     <input className='profile__input'
-                        disabled={isEditing}
+                        disabled={!isEditing}
                         type='text'
                         name='name'
                         placeholder='Имя'
@@ -52,7 +52,7 @@ const Profile = ({ onLogout }) => {
                 <label className='profile__fields'>
                     <p className='profile__input-email'>E-mail</p>
                     <input className='profile__input'
-                        disabled={isEditing}
+                        disabled={!isEditing}
                         type='email'
                         name='email'
                         value={user.email || ''}
@@ -61,13 +61,41 @@ const Profile = ({ onLogout }) => {
                         required />
                 </label>
             </fieldset>
-            <div className='profile__nav'>
+
+            {
+          isEditing
+            ? <button
+                type="submit"
+                className="profile__submit"
+                // disabled={isSameValues || !isValid}
+              >
+                Сохранить
+              </button>
+            : <div className="profile__nav">
+                <button
+                  type="button"
+                  className="profile__button profile__button_type_edit"
+                  onClick={handleMakeEditable}
+                >
+                  Редактировать
+                </button>
+                <button
+                  type="button"
+                  className="profile__button profile__button_type_logout"
+                  onClick={handleLogout}
+                >
+                  Выйти из аккаунта
+                </button>
+              </div>
+        }
+
+            {/* <div className='profile__nav'>
                 <button className='profile__button_edit' type='submit' onClick={handleMakeEditable}>Редактировать</button>
-                <button className='profile__button_signin' onClick={handleLogout}>Выйти из аккаунта</button>
-            </div>
+                <button className='profile__button_signin' type='button' onClick={handleLogout}>Выйти из аккаунта</button>
+            </div> */}
         </form>
       </div>
-    </section>
+    </main>
     </>
   );
 }

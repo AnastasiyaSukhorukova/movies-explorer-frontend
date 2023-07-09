@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Register() {
 
   return(
-    <section className="register">
+    <main className="register">
       <div className="register__box">
         <div className="register__logo-box">
           <Link to="/">
@@ -14,7 +14,7 @@ function Register() {
           </Link>
         </div>
 
-        <h2 className="register__title">Добро пожаловать!</h2>
+        <h1 className="register__title">Добро пожаловать!</h1>
 
         <form noValidate className="register__form" name="register-form">
           <div className="register__field">
@@ -74,13 +74,13 @@ function Register() {
                 Зарегистрироваться</button>
               <Link className="register__link" to="/signin">
                   Уже зарегистрированы?
-                  <span className="register__login">Войти</span>
+                  <button className="register__login"  type="submit">Войти</button>
               </Link>
           </div>
         </form>
 
       </div>
-    </section>
+    </main>
   );
 }
 

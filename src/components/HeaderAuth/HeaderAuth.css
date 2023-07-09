@@ -29,7 +29,7 @@
   color: #FFF
 }
 
-.header__container_films {
+.header__link {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -97,7 +97,7 @@
 }
 
 @media screen and (max-width: 769px) {
-  .header__container_films {
+  .header__link {
     display: none;
   }
 
@@ -125,7 +125,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .header__container-films {
+  .header__link {
     display: none;
   }
 

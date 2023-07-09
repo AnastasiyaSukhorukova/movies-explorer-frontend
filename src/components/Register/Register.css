@@ -166,6 +166,8 @@
   padding: 0 0 0 6px;
   color: #4285F4;
   letter-spacing: 0.8px;
+  background-color: #202020;
+  border: none;
 }
 
 .register__login:hover {

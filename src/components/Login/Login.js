@@ -11,14 +11,14 @@ function Login({onLogin}) {
   }
   
   return(
-    <section className="login">
+    <main className="login">
       <div className="login__box">
             <div className="login__logo-box">
               <Link to="/">
                 <img src={logo} alt="Логотип" className="login__logo" />
               </Link>
             </div>
-        <h2 className="login__title">Рады видеть!</h2>
+        <h1 className="login__title">Рады видеть!</h1>
         <form noValidate className="login__form" name="login-form" onSubmit={handleSubmit}>
           <div className="login__field">
               <label>
@@ -51,12 +51,12 @@ function Login({onLogin}) {
               <button className="login__button" type="submit">Войти</button>
               <Link className="login__link" to="/signup">
                   Ещё не зарегистрированы?
-                  <span className="login__register">Регистрация</span>
+                  <button className="login__register" type="submit">Регистрация</button>
               </Link>
           </div>
         </form>
       </div>
-    </section>
+    </main>
   );
 }
 

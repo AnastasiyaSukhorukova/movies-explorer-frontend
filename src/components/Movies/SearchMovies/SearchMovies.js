@@ -6,6 +6,7 @@ import "./SearchMovies.css"
 function SearchMovies(props) {
   
   return (
+    <section>
       <form noValidate className="searchmovies" onSubmit={(e)=>{e.preventDefault()}}>
         <div className="searchmovies__block">
           <div className="searchmovies__container">
@@ -26,6 +27,7 @@ function SearchMovies(props) {
           <p className="searchmovies__shorts">Короткометражки</p>
         </label>
       </form>
+    </section>
   );
 }
 
