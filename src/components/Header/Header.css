@@ -82,5 +82,7 @@ opacity: 0.7;
 
 .header__button-auth {
   font-size: 10px;
+  width: 54px;
+  height: 26px;
 }
 }

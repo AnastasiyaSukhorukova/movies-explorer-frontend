@@ -123,3 +123,26 @@
   }
 
 }
+
+@media screen and (max-width: 425px) {
+  .moviesCard {
+    height: 170px;
+  }
+
+  .moviesCard__image {
+    height: 168px;
+  }
+
+  .moviesCard__line {
+    margin-top: 25px;
+  }
+
+  .moviesCard__container {
+    margin-top: 10px;
+  }
+
+  .moviesCard__duration {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}

@@ -1,9 +1,11 @@
-.main__savedMovies {
-  padding-bottom: 234px;
-}
-
 @media screen and (max-width: 769px) {
   .main__savedMovies {
     padding-bottom: 99px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main__savedMovies {
+    padding-bottom: 95px;
   }
 }

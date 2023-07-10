@@ -7,8 +7,10 @@ function Error404() {
     <main className="error404">
       <h1 className="error404__title">404</h1>
       <p className="error404__text">Страница не найдена</p>
-      <Link to="/" className="error404__button">
+      <Link to="/">
+      <button className="error404__button">
         Назад
+      </button>
       </Link>
     </main>
   );

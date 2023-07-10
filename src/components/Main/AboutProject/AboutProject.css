@@ -12,6 +12,7 @@
   padding-bottom: 23px;
   margin: 0;
   border-bottom: 1px solid #fff;
+  letter-spacing: -0.04em;
 }
 
 .project {
@@ -38,6 +39,7 @@
   font-size: 20px;
   line-height: 24px;
   margin: 0;
+  letter-spacing: -0.04em;
 }
 
 .project-block__description {
@@ -46,7 +48,7 @@
   font-size: 14px;
   line-height: 20px;
   margin: 0;
-  letter-spacing: 0.7px;
+  letter-spacing: 0;
 }
 
 .project-duration {
@@ -130,19 +132,25 @@
 
 @media screen and (max-width: 725px){
   .about-project {
-    padding: 70px 18px 70px 18px;
+    padding: 73px 18px 70px;
     max-width: 284px;
+  }
+
+  .project-block {
+    gap: 16px;
   }
 
   .about-project__title {
     font-size: 18px;
     line-height: 22px;
-    padding-bottom: 28px;
+    padding-bottom: 26px;
+    letter-spacing: -0.04em;
   }
   .project {
     width: 100%;
     flex-direction: column;
     gap: 56px;
+    padding: 61px 0 66px;
   }
 
   .project-duration__backend {
@@ -151,5 +159,30 @@
 
   .project-duration__frontend {
     width: 184px;
+  }
+
+  .project-block__description {
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0;
+  }
+
+  .project-block__title {
+    letter-spacing: -0.1em;
+  }
+
+  .project-duration__time-green {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .project-duration__time-grey {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .project-duration__title {
+    font-size: 11px;
+    line-height: 13px;
   }
 }

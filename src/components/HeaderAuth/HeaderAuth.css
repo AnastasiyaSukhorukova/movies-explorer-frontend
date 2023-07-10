@@ -41,7 +41,7 @@
   line-height: 18px;
   color: #fff;
   text-decoration: none;
-  letter-spacing: 1px;
+  letter-spacing: 0;
 }
 
 .header__button-films:hover {
@@ -52,7 +52,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0;
   text-align: right;
   color: #fff;
   text-decoration: none;
@@ -75,7 +75,7 @@
   width: 100px;
   height: 32px;
   box-sizing: border-box;
-  letter-spacing: 1px;
+  letter-spacing: 0;
 }
 
 .header__button-image {
@@ -114,7 +114,6 @@
   }
 
   .header__button-account {
-    align-items: normal;
     height: 30px;
   }
 

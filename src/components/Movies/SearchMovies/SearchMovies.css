@@ -58,7 +58,7 @@
 
 .searchmovies__shorts {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 18px;
   color: #fff;
   margin: 0;
@@ -134,13 +134,14 @@
 
 @media screen and (max-width: 425px) {
   .searchmovies {
-    padding: 98px 14px 0;
+    padding: 78px 14px 0;
   }
 
   .searchmovies__input {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 18px;
     text-align: left;
+    padding: 13px 0 13px 16px;
   }
 
   .searchmovies__input-logo {
@@ -150,5 +151,14 @@
   .searchmovies__switch {
     max-width: 292px;
     padding: 43px 0 51px;
+    gap: 13px;
+  }
+
+  .searchmovies__button {
+    width: 90px;
+  }
+
+  .searchmovies__shorts {
+    font-size: 11px;
   }
 }

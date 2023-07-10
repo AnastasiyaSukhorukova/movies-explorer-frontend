@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 0;
   background-color: #202020;
+  align-items: center;
 }
 
 .error404__title {
@@ -31,8 +32,10 @@
   text-align: center;
   color: #4285F4;
   text-decoration: none;
-  margin-bottom: 60px;
+  margin-bottom: 222px;
   cursor: pointer;
+  background-color: #202020;
+  border: none;
 }
 
 .error404__button:hover {
@@ -42,5 +45,25 @@
 @media screen and (max-width: 825px) {
   .error404__title {
     margin-top: 408px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .error404__title {
+    margin-top: 329px;
+    font-size: 80px;
+    line-height: 97px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .error404__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 284px;
+  }
+
+  .error404__button {
+
   }
 }

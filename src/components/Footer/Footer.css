@@ -11,7 +11,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
 }
 
 .footer__caption {
@@ -38,7 +38,7 @@
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 20px;
+  gap: 11px;
 }
 
 .footer__link-item {
@@ -57,8 +57,9 @@
     padding: 0 30px;
   }
 
+  /* это не исправлять!!! */
   .footer__caption {
-    padding-top: 59px;
+    padding-top: 79px;
   }
 }
 
@@ -70,11 +71,15 @@
 
   .footer__container {
     min-height: 253px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
   }
 
   .footer__caption {
     min-width: 300px;
     text-align: center;
+    padding-top: 79px;
   }
 
   .footer__info {

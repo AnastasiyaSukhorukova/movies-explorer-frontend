@@ -27,8 +27,8 @@
 @media screen and (max-width: 425px) {
   .movieCardList__box {
     grid-template-columns: 300px;
-    row-gap: 39px;
+    row-gap: 110px;
     justify-content: center;
-    padding: 40px 0 30px;
+    padding: 40px 0 135px;
   }
 }

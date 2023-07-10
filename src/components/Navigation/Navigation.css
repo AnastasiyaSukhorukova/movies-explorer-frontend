@@ -71,7 +71,7 @@
   }
 
   .hamburger-menu__links {
-    padding: 105px 90px 621px 90px;
+    padding: 105px 90px 611px 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,4 +132,18 @@
   .hamburger-menu__active {
     width: 100%;
   }  
+
+  .hamburger-menu__links {
+    padding: 97px 0 438px;
+    gap: 19px;
+  }
+
+  .hamburger-menu__close {
+    margin-top: 12px;
+    margin-right: 8px;
+  }
+
+  .hamburger-menu__link {
+    padding-bottom: 5px;
+  }
 }
