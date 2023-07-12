@@ -20,6 +20,12 @@
 }
 
 .header__button {
+  background-color: #073042;
+  border: none;
+  color: #FFFFFF;
+}
+
+.header__button-signup {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -28,7 +34,7 @@
   color: #FFFFFF;
 }
 
-.header__button:hover {
+.header__button-signup:hover {
 opacity: 0.7;
 }
 
@@ -76,7 +82,7 @@ opacity: 0.7;
   gap: 14px;
 }
 
-.header__button {
+.header__button-signup {
   font-size: 10px;
 }
 

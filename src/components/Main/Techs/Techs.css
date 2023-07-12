@@ -79,11 +79,11 @@
 @media screen and (max-width: 825px) {
   .techs__container {
     max-width: 668px;
-    padding: 85px 50px 90px 50px;
+    padding: 77px 50px 90px 50px;
   }
 
   .techs__title {
-    padding-bottom: 17px;
+    padding-bottom: 24px;
   }
 
   .techs__subtitle {
@@ -98,7 +98,7 @@
   }
 
   .techs__cards {
-    width: 668px;
+    width: 649px;
     justify-content: space-between;
   }
 
@@ -108,7 +108,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
   }
 }
 
@@ -126,7 +126,7 @@
   }
 
   .techs__subtitle {
-    padding: 71px 0 24px 0;
+    padding: 65px 0 24px 0;
     font-size: 30px;
     line-height: 36px;
     letter-spacing: -0.04em;

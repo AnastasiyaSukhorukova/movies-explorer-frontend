@@ -34,7 +34,7 @@ function Movies() {
         ? <Preloader />
         : <MoviesCardList moviesData={moviesData}/>
       }
-            <button className="movies__button">
+            <button className="movies__button" type="button">
               Еще
             </button>
       </main>

@@ -59,17 +59,17 @@
 }
 
 .aboutme__github {
-  margin: 75px 0 0;
+  margin: 99px 0 0;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   color: #fff;
   text-decoration: none;
-  cursor: pointer;
 }
 
-.aboutme__githab:hover  {
+.aboutme__github:hover  {
+  cursor: pointer;
   opacity: 0.7;
 }
 
@@ -83,7 +83,7 @@
 
 @media screen and (max-width: 825px){
   .aboutme {
-    padding: 90px 50px;
+    padding: 90px 50px 72px;
   }
 
   .aboutme__container {
@@ -98,7 +98,7 @@
   .aboutme__job {
     font-size: 12px;
     line-height: 18px;
-    margin-bottom: 16px;
+    margin: 14px 0 19px;
   }
 
   .aboutme__info {
@@ -108,7 +108,7 @@
   }
 
   .aboutme__github {
-    margin: 69px 0 0;
+    margin: 89px 0 0;
   }
 
   .aboutme__avatar {
@@ -143,17 +143,16 @@
   .aboutme__job {
     font-size: 11px;
     line-height: 16px;
-    letter-spacing: -0.04em;
+    margin: 21px 0 17px;
   }
 
   .aboutme__info {
     font-size: 11px;
     line-height: 16px;
-    letter-spacing: -0.04em;
   }
 
   .aboutme__github {
-    margin: 44px 0 0;
+    margin: 42px 0 0;
   }
 
   .aboutme__avatar {

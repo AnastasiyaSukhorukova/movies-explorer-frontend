@@ -14,10 +14,10 @@ function AboutMe() {
           <h3 className="aboutme__name">Анастасия</h3>
           <p className="aboutme__job">Фронтенд разработчик, 23 года</p>
           <p className="aboutme__info">Я родилась и живу в городе Белгород. Я закончила институт экономики и управления НИУ "БелГУ". В данный момент я сотрудничаю с аутсорсинговой 
-          бухгалтерской компанией как ИП. Я люблю пробовать себя в новых направлениях, прохожу курс по веб-разработке от Яндекс.Практикум. Планирую совмещать разные виды деятельности, 
+          бухгалтерской компанией как ИП. Я люблю пробовать себя в новых направлениях. Планирую совмещать разные виды деятельности, 
           развиваться и в бухгалтерии, и в it.
           </p>
-          <a className="aboutme__github" href="https://github.com/AnastasiyaSukhorukova" target="_blank" rel="noreferrer">GitHub</a>
+          <a className="aboutme__github" href="https://github.com/AnastasiyaSukhorukova" target="_blank" rel="noreferrer">Github</a>
         </div>
         <img className="aboutme__avatar" src={Avatar} alt="Сухорукова Анастасия"></img>
       </div>

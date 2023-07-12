@@ -137,7 +137,7 @@
   }
 
   .project-block {
-    gap: 16px;
+    gap: 15px;
   }
 
   .about-project__title {
@@ -149,7 +149,7 @@
   .project {
     width: 100%;
     flex-direction: column;
-    gap: 56px;
+    gap: 58px;
     padding: 61px 0 66px;
   }
 

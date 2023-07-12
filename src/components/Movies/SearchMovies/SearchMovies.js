@@ -18,7 +18,7 @@ function SearchMovies(props) {
             required
           />
         </div>
-        <button className="searchmovies__button">Найти</button>
+        <button className="searchmovies__button" type="submit">Найти</button>
         </div>
 
         <label className="searchmovies__switch">

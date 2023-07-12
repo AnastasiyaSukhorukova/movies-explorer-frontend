@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 
 function Error404() {
   return(
-    <main className="error404">
+    <section className="error404">
       <h1 className="error404__title">404</h1>
       <p className="error404__text">Страница не найдена</p>
       <Link to="/">
-      <button className="error404__button">
+      <button type="button" className="error404__button">
+        <p className="error404__text error404__text-blue">
         Назад
+        </p>
       </button>
       </Link>
-    </main>
+    </section>
   );
 }
 

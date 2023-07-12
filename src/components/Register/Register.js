@@ -7,7 +7,7 @@ function Register() {
 
   return(
     <main className="register">
-      <div className="register__box">
+      <section className="register__box">
         <div className="register__logo-box">
           <Link to="/">
             <img src={logo} alt="Логотип" className="register__logo" />
@@ -19,7 +19,7 @@ function Register() {
         <form noValidate className="register__form" name="register-form">
           <div className="register__field">
           <label>
-                  <label className="register__name">Имя</label>
+                  <span className="register__name">Имя</span>
                   <input 
                         className="register__input"
                          type="text" 
@@ -30,12 +30,12 @@ function Register() {
                          maxLength={30}
                          pattern="^[A-Za-zА-Яа-яЁё /s -]{4,30}"
                          required={true}
-                         value={'Виталий'}
+                         defaultValue={'Виталий'}
                    />
-                   <span className="error__register" ></span>
+                   <span className="register__field-error" ></span>
               </label>
               <label>
-                  <label className="register__email">E-mail</label>
+                  <span className="register__email">E-mail</span>
                   <input 
                         className="register__input"
                          type="email" 
@@ -46,13 +46,14 @@ function Register() {
                          required={true}
                          minLength={2}
                          maxLength={30}
-                         value={'pochta@yandex.ru'}
+                         defaultValue={'pochta@yandex.ru'}
+                        //  onChange={handleChange}
                   />
-                  <span className="error__register" ></span>
+                  <span className="register__field-error" ></span>
               </label>
               <label>
-                  <label className="register__password">Пароль</label>
-                  <input 
+                    <span className="register__password">Пароль</span>
+                    <input 
                           className="register__input register__input-invalid"
                          type="password" 
                          name="password" 
@@ -61,25 +62,25 @@ function Register() {
                          minLength={4}
                          maxLength={8}
                          required={true}
-                         value={'••••••••••••••'}
-                   />
-                   
+                         defaultValue={'••••••••••••••'}
+                        //  onChange={handleChange}
+                    />
               </label>
-              <span className="error__register" >{'Что-то пошло не так...'}</span>
+              <span className="register__field-error" >{'Что-то пошло не так...'}</span>
           </div>
           <div className="register__button-box">
               <button 
               className="register__button"
-              type="submit">
+              type="button">
                 Зарегистрироваться</button>
-              <Link className="register__link" to="/signin">
+              <p className="register__link">
                   Уже зарегистрированы?
-                  <button className="register__login"  type="submit">Войти</button>
-              </Link>
+                  <Link to="/signin" className="register__login">Войти</Link>
+              </p>
           </div>
         </form>
 
-      </div>
+      </section>
     </main>
   );
 }

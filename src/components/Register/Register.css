@@ -103,14 +103,13 @@
   outline: 1px solid #4285F4;
 }
 
-.error__register {
-  padding-top: 10px;
+.register__field-error {
+  padding: 10px 0 0;
   color: #EE3465;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  letter-spacing: 0.7px;
 }
 
  .register__input-invalid {
@@ -156,7 +155,8 @@
   line-height: 17px;
   text-align: center;
   color: #A0A0A0;
-  padding-top: 16px;
+  padding: 14px 0 0;
+  margin: 0;
 }
 
 .register__login {
@@ -164,6 +164,7 @@
   color: #4285F4;
   background-color: #202020;
   border: none;
+  text-decoration: none;
 }
 
 .register__login:hover {
@@ -171,13 +172,13 @@
 }
 
 @media screen and (max-width: 769px){
-  .register{
+  .register {
     padding: 232px 0 232px 0;
   }
 
-  .register__input {
+  /* .register__input {
     letter-spacing: 1.5px;
-  }
+  } */
 }
 
 @media screen and (max-width: 525px){

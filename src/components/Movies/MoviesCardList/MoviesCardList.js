@@ -8,13 +8,13 @@ const MoviesCardList = ({ moviesData }) => {
   
   return(
     <section className="movieCardList">
-      <div className="movieCardList__box">
+      <ul className="movieCardList__box">
       {
           moviesData.map(({ _id, ...movie}) => (
             <MoviesCard key={_id} movieData={movie} />
           ))
         }
-      </div>
+      </ul>
     </section>
   );
 }

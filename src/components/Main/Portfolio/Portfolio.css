@@ -77,6 +77,10 @@
   .portfolio__container {
     padding-bottom: 0;
   }
+
+  .portfolio__item {
+    padding-bottom: 18px;
+  }
 }
 
 @media screen and (max-width: 525px){
@@ -109,6 +113,6 @@
   }
 
   .portfolio__item {
-    padding-bottom: 21px;
+    padding-bottom: 19px;
   }
 }

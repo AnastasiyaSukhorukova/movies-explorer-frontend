@@ -36,6 +36,10 @@
   border: #2F2F2F;
 }
 
+.searchmovies__input:focus {
+  outline: 1px solid #4285F4;
+}
+
 .searchmovies__button {
   border-radius: 3px;
   background-color: #343434;

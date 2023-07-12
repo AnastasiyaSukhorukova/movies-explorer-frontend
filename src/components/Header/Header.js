@@ -16,14 +16,20 @@ const Header = ({ isLogged }) => {
             <Link to="/">
               <img src={logo} alt="Логотип" className="header__logo" />
             </Link>
-            <div className="header__button-container">
-              <Link to="/signup" className="header__button">
+            <nav className="header__button-container">
+          
+              <Link to="/signup" className="header__button-signup">
+              {/* <button type="button" className="header__button"> */}
                 Регистрация
+                {/* </button> */}
               </Link>
+
+              {/* <button type="button" className="header__button"> */}
               <Link to="/signin" className="header__button-auth">
                 Войти
               </Link>
-            </div>
+              {/* </button> */}
+            </nav>
           </div>
         </header>
         )}

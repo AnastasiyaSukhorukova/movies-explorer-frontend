@@ -28,9 +28,8 @@ const Profile = ({ onLogout }) => {
   }
 
   return(
-    <>
     <main className="profile">
-      <div className='profile__content'>
+      <section className='profile__content'>
         <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
         <form className='profile__form' onSubmit={handleSubmit}>
             <fieldset className='profile__fieldset'>
@@ -43,7 +42,7 @@ const Profile = ({ onLogout }) => {
                         placeholder='Имя'
                         minLength={2}
                         maxLength={30}
-                        value={user.name || ''}
+                        defaultValue={user.name || ''}
                         onChange={handleChange}
                         required
                     />
@@ -94,9 +93,8 @@ const Profile = ({ onLogout }) => {
                 <button className='profile__button_signin' type='button' onClick={handleLogout}>Выйти из аккаунта</button>
             </div> */}
         </form>
-      </div>
+      </section>
     </main>
-    </>
   );
 }
 

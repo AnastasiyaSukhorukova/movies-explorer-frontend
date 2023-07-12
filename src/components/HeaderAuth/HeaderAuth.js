@@ -16,14 +16,12 @@ function HederAuth() {
           <Link to="/" className="header__auth-logo">
             <img src={logo} alt="Логотип" />
           </Link>
-            <div className="header__link">
-              <Link to="/movies" className="header__button-films">
-                Фильмы
-              </Link>
-                 <Link to="/saved-movies" className="header__button-savefilms">
-                   Сохранённые фильмы
-                 </Link>
-            </div>
+
+            <ul className="header__link">
+              <li><Link to="/movies" className="header__button-films">Фильмы</Link></li>
+              <li><Link to="/saved-movies" className="header__button-savefilms">Сохранённые фильмы</Link></li>
+            </ul>
+            
           </div>
         <div>
         <Navigation />

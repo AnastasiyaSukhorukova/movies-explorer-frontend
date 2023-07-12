@@ -13,7 +13,6 @@
   text-align: center;
   color: #fff;
   margin: 246px 0 5px;
-  letter-spacing: 5px;
 }
 
 .error404__text {
@@ -26,11 +25,6 @@
 }
 
 .error404__button {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: #4285F4;
   text-decoration: none;
   margin-bottom: 222px;
   cursor: pointer;
@@ -42,9 +36,20 @@
   opacity: 0.7;
 }
 
+.error404__text-blue {
+  color: #4285F4;
+  font-size: 14px;
+  line-height: 17px;
+}
+
 @media screen and (max-width: 825px) {
   .error404__title {
     margin-top: 408px;
+  }
+
+  .error404__text-blue {
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
@@ -60,10 +65,11 @@
   .error404__text {
     font-size: 12px;
     line-height: 15px;
-    margin-bottom: 284px;
+    margin-bottom: 281px;
   }
 
   .error404__button {
-
+    font-size: 12px;
+    line-height: 15px;
   }
 }
