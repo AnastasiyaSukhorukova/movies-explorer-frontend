@@ -1,0 +1,145 @@
+.header__auth {
+  width: 100%;
+  background-color: #202020;
+}
+
+.header__auth-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  min-height: 74px;
+  padding: 0 70px;
+}
+
+.header__position {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+.header__auth-yes {
+  background-color: #202020;
+}
+.header__auth-yes a {
+  color: white;
+}
+.header__auth-yes .header__account-button {
+  background-color: #FFF;
+  color: #FFF
+}
+
+.header__link {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.header__button-films {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0;
+}
+
+.header__button-films:hover {
+  opacity: 0.7;
+}
+
+.header__button-savefilms {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: right;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__button-savefilms:hover {
+  opacity: 0.7;
+}
+
+.header__button-account {
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+  text-decoration: none;
+  width: 100px;
+  height: 32px;
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+.header__button-image {
+  padding: 8px 7.25px;
+  background-color: #313131;
+  border-radius: 4px;
+}
+
+.header__button-account:hover {
+  opacity: 0.7;
+}
+
+.header__auth-logo {
+  cursor: pointer;
+}
+
+.header__auth-logo:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 769px) {
+  .header__link {
+    display: none;
+  }
+
+  .header__auth-container {
+    padding: 0 30px;
+  }
+
+  .header__auth-yes a {
+    color: #fff;
+  }
+
+  .header__display-none {
+    display: none;
+  }
+
+  .header__button-account {
+    height: 30px;
+  }
+
+  .header__button-image {
+    max-height: 30px;
+    max-width: 26px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__link {
+    display: none;
+  }
+
+  .header__auth-container {
+    padding: 0 14px;
+  }
+
+  .header__auth-yes a {
+    color: #fff;
+  }
+
+  .header__display-none {
+    display: none;
+  }
+}

@@ -1,0 +1,168 @@
+.searchmovies {
+  padding: 80px 70px 0;
+  background-color: #202020;
+  border-bottom: 1px solid #2F2F2F;
+}
+
+.searchmovies__block {
+  max-height: 46px;
+  max-width: 1140px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background-color: #202020;
+}
+
+.searchmovies__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.searchmovies__input {
+  height: 48px;
+  width: 100%;
+  padding: 15px 0 15px 22px;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 34px;
+  text-align: left;
+  background-color: #2F2F2F;
+  color: #fff;
+  border: #2F2F2F;
+}
+
+.searchmovies__input:focus {
+  outline: 1px solid #4285F4;
+}
+
+.searchmovies__button {
+  border-radius: 3px;
+  background-color: #343434;
+  width: 70px;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-color: #4285F4;
+  border: #FFFFFF;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #fff;
+  margin: 0;
+}
+
+.searchmovies__button:hover {
+  opacity: 0.7;
+}
+
+.searchmovies__shorts {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+  margin: 0;
+}
+
+.searchmovies__switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  margin: auto;
+  justify-content: center;
+  padding: 31px 0 40px;
+  cursor: pointer;
+}
+
+.searchmovies__switch:hover {
+  opacity: 0.7;
+}
+
+.searchmovies__checkbox-input {
+  display: none;
+}
+
+.searchmovies__checkbox-custom {
+  width: 36px;
+  height: 20px;
+  background-color: #343434;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.searchmovies__checkbox-custom::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  top: 2px;
+  left: 8.33%; 
+  background-color: #343434;
+  border: 1px solid #fff;
+  transition: 0.3s;
+}
+
+.searchmovies__checkbox-input:checked ~ .searchmovies__checkbox-custom {
+  background: #343434;
+}
+.searchmovies__checkbox-input:checked ~ .searchmovies__checkbox-custom::after {
+  left: 60%;
+  background-color: #2BE080;
+  border: 1px solid #fff;
+}
+
+@media screen and (max-width: 769px) {
+  
+  .searchmovies {
+    padding: 80px 30px 0;
+  }
+
+  .searchmovies__block {
+    margin: auto;
+  }
+
+  .searchmovies__switch {
+    max-width: 708px;
+    padding: 31px 0 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .searchmovies {
+    padding: 78px 14px 0;
+  }
+
+  .searchmovies__input {
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    padding: 13px 0 13px 16px;
+  }
+
+  .searchmovies__input-logo {
+    display: none;
+  }
+
+  .searchmovies__switch {
+    max-width: 292px;
+    padding: 43px 0 51px;
+    gap: 13px;
+  }
+
+  .searchmovies__button {
+    width: 90px;
+  }
+
+  .searchmovies__shorts {
+    font-size: 11px;
+  }
+}

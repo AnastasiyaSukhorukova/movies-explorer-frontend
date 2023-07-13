@@ -1,0 +1,163 @@
+.aboutme {
+  background-color: #202020;
+  padding: 110px 70px 0;
+  margin: 0;
+}
+
+.aboutme__title {
+  box-sizing: border-box;
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #fff;
+  letter-spacing: -0.04em;
+}
+
+.aboutme__container {
+  margin: 66px 0 0;
+  display: flex;
+}
+
+.aboutme__information {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutme__name {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.aboutme__job {
+  margin: 18px 0 26px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #fff;
+  letter-spacing: 0;
+}
+
+.aboutme__info {
+  margin: 0;
+  max-width: 600px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fff;
+  letter-spacing: 0;
+}
+
+.aboutme__github {
+  margin: 99px 0 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.aboutme__github:hover  {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.aboutme__avatar {
+  margin-left: auto;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 825px){
+  .aboutme {
+    padding: 90px 50px 72px;
+  }
+
+  .aboutme__container {
+    margin: 66px 0 0;
+  }
+
+  .aboutme__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .aboutme__job {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 14px 0 19px;
+  }
+
+  .aboutme__info {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 364px;
+  }
+
+  .aboutme__github {
+    margin: 89px 0 0;
+  }
+
+  .aboutme__avatar {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .aboutme {
+    padding: 79px 14px 0;
+  }
+
+  .aboutme__title {
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    padding-bottom: 26px;
+  }
+
+  .aboutme__container {
+    padding: 60px 0 69px;
+    gap: 40px;
+    flex-direction: column-reverse;
+    margin: 0;
+  }
+
+  .aboutme__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .aboutme__job {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 21px 0 17px;
+  }
+
+  .aboutme__info {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .aboutme__github {
+    margin: 42px 0 0;
+  }
+
+  .aboutme__avatar {
+    margin: auto;
+    width: 292px;
+    height: 352px;
+  }
+}

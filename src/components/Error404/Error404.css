@@ -1,0 +1,75 @@
+.error404 {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background-color: #202020;
+  align-items: center;
+}
+
+.error404__title {
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+  color: #fff;
+  margin: 246px 0 5px;
+}
+
+.error404__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 184px;
+}
+
+.error404__button {
+  text-decoration: none;
+  margin-bottom: 222px;
+  cursor: pointer;
+  background-color: #202020;
+  border: none;
+}
+
+.error404__button:hover {
+  opacity: 0.7;
+}
+
+.error404__text-blue {
+  color: #4285F4;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 825px) {
+  .error404__title {
+    margin-top: 408px;
+  }
+
+  .error404__text-blue {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .error404__title {
+    margin-top: 329px;
+    font-size: 80px;
+    line-height: 97px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .error404__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 281px;
+  }
+
+  .error404__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
