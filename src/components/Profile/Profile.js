@@ -1,37 +1,69 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Profile.css";
-import { useState } from 'react';
+import { getProfile, updateProfile } from "../../utils/MainApi"
+import { CurrentUserContext } from "../App/App";
+import { useNavigate } from 'react-router-dom';
+import Header from "../Header/Header";
+import { PROFILE_UPDATE_MESSAGE } from "../../utils/Constants/constants"
 
-const Profile = ({ onLogout }) => {
-
-  const [user, setUser] = useState({name: 'Анастасия', email: 'email@mail.ru'});
-
+const Profile = () => {
+  const { user, setUser, setLogedId, openPopup } = useContext(CurrentUserContext);
+  
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [isUpdate, setIsUpdate] = useState(false)
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleMakeEditable = () => {
-    setIsEditing(true);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    getProfile()
+    .then(data => {
+      setUser(data);
+      setName(data.name)
+      setEmail(data.email)
+    }).catch(error=>{
+        console.error('getProfile error ', error)
+    });
+  },[])
+
+  useEffect(() => {
+    if((user.name !== name || user.email !== email)){
+      setIsUpdate(true)
+    } else {
+      setIsUpdate(false)
+    }
+  }, [user, email, name])
+  
+  const handleProfileUpdate = (name, email) => {
+    updateProfile({name: name, email: email})
+    .then(data => {
+      setUser(data);
+      if (data.message) {
+        openPopup(data.message)
+      } else {
+        openPopup(PROFILE_UPDATE_MESSAGE)
+      }
+    })
+    .catch(error => {
+      console.error('handleProfileUpdate error ', error)
+    });
   }
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setUser({...user, [name]: value});
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Profile edit form submitted');
-    setIsEditing(false);
-  }
-
-  const handleLogout = () => {
-    onLogout();
+  const signOut = () => {
+    localStorage.clear();
+    setLogedId(false);
+    navigate("/");
+    window.location.reload();
   }
 
   return(
+    <>
+    <Header loged={true}/>
     <main className="profile">
       <section className='profile__content'>
         <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
-        <form className='profile__form' onSubmit={handleSubmit}>
+        <form className='profile__form' onSubmit={e => e.preventDefault()}>
             <fieldset className='profile__fieldset'>
                 <label className='profile__fields'>
                     <p className='profile__input-name'>Имя</p>
@@ -42,8 +74,8 @@ const Profile = ({ onLogout }) => {
                         placeholder='Имя'
                         minLength={2}
                         maxLength={30}
-                        defaultValue={user.name || ''}
-                        onChange={handleChange}
+                        value={name}
+                        onChange={(event)=> setName(event.target.value)}
                         required
                     />
                 </label>
@@ -54,8 +86,8 @@ const Profile = ({ onLogout }) => {
                         disabled={!isEditing}
                         type='email'
                         name='email'
-                        value={user.email || ''}
-                        onChange={handleChange}
+                        value={email}
+                        onChange={(event)=> setEmail(event.target.value)}
                         placeholder='E-mail'
                         required />
                 </label>
@@ -74,27 +106,24 @@ const Profile = ({ onLogout }) => {
                 <button
                   type="button"
                   className="profile__button profile__button_type_edit"
-                  onClick={handleMakeEditable}
+                  onClick={()=>handleProfileUpdate(name, email)} 
+                  disabled={!isUpdate}
                 >
                   Редактировать
                 </button>
                 <button
                   type="button"
                   className="profile__button profile__button_type_logout"
-                  onClick={handleLogout}
+                  onClick={signOut}
                 >
                   Выйти из аккаунта
                 </button>
               </div>
         }
-
-            {/* <div className='profile__nav'>
-                <button className='profile__button_edit' type='submit' onClick={handleMakeEditable}>Редактировать</button>
-                <button className='profile__button_signin' type='button' onClick={handleLogout}>Выйти из аккаунта</button>
-            </div> */}
         </form>
       </section>
     </main>
+  </>
   );
 }
 

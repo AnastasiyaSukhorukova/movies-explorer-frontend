@@ -1,11 +1,13 @@
-// import React, { useContext } from "react";
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
+import { CurrentUserContext } from "../App/App";
 
-const Header = ({ isLogged }) => {
+const Header = () => {
+
+  const { isLogged } = useContext(CurrentUserContext);
 
   return (
     <>

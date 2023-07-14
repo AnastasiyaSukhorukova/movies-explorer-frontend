@@ -14,3 +14,6 @@ export const MOVIES_CARDS_480 = 5;
 export const ADD_MOVIES_CARD_1280 = 3;
 export const ADD_MOVIES_CARD_768 = 2;
 export const ADD_MOVIES_CARD_480 = 1;
+
+//Сообщения для пользователя
+export const PROFILE_UPDATE_MESSAGE = "Изменения в профиль внесены!"
