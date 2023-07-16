@@ -120,6 +120,17 @@
   border: 1px solid #fff;
 }
 
+.searchmovies__error {
+  color: #EE3465;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
 @media screen and (max-width: 769px) {
   
   .searchmovies {

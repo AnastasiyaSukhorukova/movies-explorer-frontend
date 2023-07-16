@@ -15,5 +15,8 @@ export const ADD_MOVIES_CARD_1280 = 3;
 export const ADD_MOVIES_CARD_768 = 2;
 export const ADD_MOVIES_CARD_480 = 1;
 
+//Длительность короткометражек (40 минут)
+export const SHORTS_MOVIES_DURATION = 41;
+
 //Сообщения для пользователя
 export const PROFILE_UPDATE_MESSAGE = "Изменения в профиль внесены!"
