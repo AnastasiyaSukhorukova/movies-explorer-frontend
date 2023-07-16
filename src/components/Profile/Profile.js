@@ -4,7 +4,7 @@ import { getProfile, updateProfile } from "../../utils/MainApi"
 import { CurrentUserContext } from "../App/App";
 import { useNavigate } from 'react-router-dom';
 import Header from "../Header/Header";
-import { PROFILE_UPDATE_MESSAGE } from "../../utils/Constants/constants"
+import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
 
 const Profile = () => {
   const { user, setUser, setLogedId, openPopup } = useContext(CurrentUserContext);
