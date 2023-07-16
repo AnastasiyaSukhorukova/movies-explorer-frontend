@@ -4,7 +4,7 @@ import { getProfile, updateProfile } from "../../utils/MainApi"
 import { CurrentUserContext } from "../App/App";
 import { useNavigate } from 'react-router-dom';
 import Header from "../Header/Header";
-import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
+// import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
 
 const Profile = () => {
   const { user, setUser, setLogedId, openPopup } = useContext(CurrentUserContext);
@@ -42,7 +42,7 @@ const Profile = () => {
       if (data.message) {
         openPopup(data.message)
       } else {
-        openPopup(PROFILE_UPDATE_MESSAGE)
+        openPopup('Изменения в профиль внесены!')
       }
     })
     .catch(error => {
