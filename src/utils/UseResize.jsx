@@ -5,7 +5,7 @@ import {
   SCREEN_LG,
   SCREEN_XL,
   SCREEN_XXL,
-} from "../../Constants/constants";
+} from "../constants/constants";
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
