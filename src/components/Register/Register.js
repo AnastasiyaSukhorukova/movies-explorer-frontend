@@ -154,7 +154,7 @@ function Register() {
               <label>
                     <label className="register__password">Пароль</label>
                     <input 
-                        className="register__input register__input-invalid"
+                        className="register__input"
                          type="password" 
                          name="password" 
                          placeholder="Введите Ваш Пароль"
