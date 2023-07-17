@@ -4,6 +4,7 @@ import SearchMovies from "./SearchMovies/SearchMovies";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 // import Preloader from "./Preloader/Preloader";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 // import { moviesData } from '../../constants/moviesData';
 import { useContext, useEffect, useState } from 'react';
 // import { apiRequestEmulation } from '../../utils/utils';
@@ -183,7 +184,7 @@ function Movies(props) {
   
   return (
     <>
-       <Header />
+      <Header />
       <main className="main__box">
       <SearchMovies
       nameLocal={titleName}
@@ -209,6 +210,7 @@ function Movies(props) {
             </button>
             )}
       </main>
+      <Footer />
     </>
   );
 }

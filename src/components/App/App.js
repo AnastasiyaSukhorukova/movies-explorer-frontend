@@ -77,7 +77,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <CurrentUserContext.Provider value={{setSearchText, user, setUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}></CurrentUserContext.Provider>
+    <CurrentUserContext.Provider value={{setSearchText, user, setUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
         <div className='App'>
           <Routes>
             {/* по роуту / отображается страница «О проекте»; */}
@@ -157,6 +157,7 @@ function App() {
             </Routes>
             <Popup popupOpen={popupOpen} popupMessage={popupMessage} closePopup={closePopup} />
           </div>
+          </CurrentUserContext.Provider>
           </BrowserRouter>
     );
 }

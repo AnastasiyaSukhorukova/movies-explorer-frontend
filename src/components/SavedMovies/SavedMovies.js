@@ -6,6 +6,8 @@ import Preloader from "../Movies/Preloader/Preloader";
 import { apiRequestEmulation } from '../../utils/utils';
 import { savedMoviesData } from '../../constants/saveMoviesData';
 import "./SavedMovies.css";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function SavedMovies() {
 
@@ -27,6 +29,8 @@ function SavedMovies() {
   }, [])
   
   return(
+    <>
+    <Header/>
        <main className="main__box main__savedMovies">
          <SearchMovies/>
          {isLoadind
@@ -35,6 +39,8 @@ function SavedMovies() {
       }
          {/* {<button className="movies__button">Еще</button>} */}
        </main>
+       <Footer/>
+    </>
   )
 
 }

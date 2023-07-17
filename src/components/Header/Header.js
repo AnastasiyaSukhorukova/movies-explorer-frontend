@@ -11,8 +11,8 @@ const Header = () => {
 
   return (
     <>
-        {!isLogged && <HeaderAuth />}
-        {isLogged && (
+        {isLogged && <HeaderAuth />}
+        {!isLogged && (
         <header className="header">
           <div className="header__container">
             <Link to="/">

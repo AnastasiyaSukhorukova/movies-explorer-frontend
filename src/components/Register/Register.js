@@ -149,12 +149,12 @@ function Register() {
                          value={email}
                          onChange={e => emailHandler(e)}
                   />
-                  <span className="register__field-error" ></span>
+                  {(emailDirty && errorMessageEmail) && <span className="register__field-error">{errorMessageEmail}</span>}
               </label>
               <label>
-              {(emailDirty && errorMessageEmail) && <span className="register__password">{errorMessageEmail}</span>}
+                    <label className="register__password">Пароль</label>
                     <input 
-                          className="register__input register__input-invalid"
+                        className="register__input register__input-invalid"
                          type="password" 
                          name="password" 
                          placeholder="Введите Ваш Пароль"
