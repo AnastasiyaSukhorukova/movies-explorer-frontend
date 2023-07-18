@@ -6,11 +6,15 @@ const options = {
   },
 };
 
-export const signup = (user) => {
+export const signup = (name, email, password) => {
 return fetch(`${options.baseUrl}/signup`, {
     method: 'POST',
     headers: options.headers,
-    body: JSON.stringify(user)
+    body: JSON.stringify({
+      name,
+      email,
+      password
+    })
   }).then(response => response.json())
 }
 
