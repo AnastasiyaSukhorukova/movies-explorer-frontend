@@ -8,7 +8,7 @@ import saveButton from "../../../images/like-active.svg";
 import { CurrentUserContext } from "../../App/App";
 import { DURATION_CONVERT } from "../../../constants/constants";
 import { setLocalStorage } from "../../../utils/localStorage";
-import { mainApi } from '../../utils/MainApi';
+import { mainApi } from '../../../utils/MainApi';
 
 const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
 
