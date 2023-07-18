@@ -20,7 +20,7 @@ function Register() {
   const [inputValid, setInputValid] = useState(false)
   const { setLogedId, openPopup } = useContext(CurrentUserContext);
 
-  const hendleRegister = async () => {
+  const handleRegister = async () => {
     signup({name, email, password})
     .then(data => {
       if(data.message){
@@ -38,7 +38,7 @@ function Register() {
         });
       }
   }).catch(error=>{
-      console.log('hendleRegister error ', error)
+      console.log('handleRegister error ', error)
   });
   }
 
@@ -172,7 +172,7 @@ function Register() {
               <button 
               className="register__button"
               type="submit"
-              onClick={hendleRegister}
+              onClick={handleRegister}
               disabled={!inputValid}>
                 Зарегистрироваться</button>
               <p className="register__link">

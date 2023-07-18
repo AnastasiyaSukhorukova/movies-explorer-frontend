@@ -1,6 +1,7 @@
 const options = {
   baseUrl: "https://api.anastasiya.movies.nomoredomains.rocks",
   headers: {
+    authorization: 'f1b678bd-8daa-4ddc-9a95-4730e9a93182',
     "Content-type": "application/json",
   },
 };
