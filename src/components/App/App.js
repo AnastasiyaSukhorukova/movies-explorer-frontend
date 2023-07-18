@@ -17,12 +17,12 @@ import Movies from '../Movies/Movies';
 import { getProfile } from "../../utils/MainApi"
 import Popup from '../Popup/Popup';
 export const CurrentUserContext = createContext();
-const initUser = {name: '', email: ''}
+const userData = {name: '', email: ''}
 
 function App() {
 
   const [searchText, setSearchText] = useState('')
-  const [user, setUser] = useState(initUser);
+  const [user, setUser] = useState(userData);
   const [logedId, setLogedId] = useState(true);
   const [saveMoviesStore, setSaveMoviesStore] = useState([]);
   const [findeSaveMoviesStore, setFindeSaveMoviesStore] = useState([]);

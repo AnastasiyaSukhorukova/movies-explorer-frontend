@@ -38,7 +38,7 @@ function Register() {
         });
       }
   }).catch(error=>{
-      console.log('handleRegister error ', error)
+      console.log('Ошибка при регистрации ', error)
   });
   }
 
