@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./Profile.css";
-import { getProfile, updateProfile } from "../../utils/MainApi"
+import { mainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from "../App/App";
 import { useNavigate } from 'react-router-dom';
 import Header from "../Header/Header";
@@ -17,7 +17,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    getProfile()
+    mainApi.getProfile()
     .then(data => {
       setUser(data);
       setName(data.name)
@@ -36,7 +36,7 @@ const Profile = () => {
   }, [user, email, name])
   
   const handleProfileUpdate = (name, email) => {
-    updateProfile({name: name, email: email})
+    mainApi.updateProfile({name: name, email: email})
     .then(data => {
       setUser(data);
       if (data.message) {

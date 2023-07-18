@@ -14,7 +14,7 @@ import Movies from '../Movies/Movies';
 // import Header from '../Header/Header';
 // import Layout from '../Layout/Layout';
 
-import { getProfile } from "../../utils/MainApi"
+import { mainApi } from '../../utils/MainApi';
 import Popup from '../Popup/Popup';
 export const CurrentUserContext = createContext();
 const userData = {name: '', email: ''}
@@ -61,7 +61,7 @@ function App() {
       setLogedId(false)
     } 
     else {
-      getProfile()
+      mainApi.getProfile()
       .then(data=>{
         if(data.message){
           localStorage.removeItem("token")

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { signup, signin } from "../../utils/MainApi";
+import { mainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from "../App/App";
 
 function Register() {
@@ -21,12 +21,12 @@ function Register() {
   const { setLogedId, openPopup } = useContext(CurrentUserContext);
 
   const handleRegister = async () => {
-    signup({name, email, password})
+    mainApi.signup({name, email, password})
     .then(data => {
       if(data.message){
         openPopup(data.message)
       } else {
-        signin({email, password})
+        mainApi.signin({email, password})
         .then(data => {
           if(data.message) {
             console.error(data.message)
@@ -37,8 +37,8 @@ function Register() {
           }
         });
       }
-  }).catch(error=>{
-      console.log('Ошибка при регистрации ', error)
+  }).catch(error => {
+      console.log('Ошибка при регистрации', error)
   });
   }
 

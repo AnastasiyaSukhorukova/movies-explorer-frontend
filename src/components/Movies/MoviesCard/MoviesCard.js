@@ -9,7 +9,7 @@ import { CurrentUserContext } from "../../App/App";
 import { DURATION_CONVERT } from "../../../constants/constants";
 import { setLocalStorage } from "../../../utils/localStorage";
 import { deleteSaveMovies } from "../../../utils/MainApi";
-import { saveMovies } from "../../../utils/MainApi";
+import { mainApi } from '../../utils/MainApi';
 
 const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
 
@@ -32,7 +32,7 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
       deleteSaveMovies(card._id)
     } else {
      
-          saveMovies(card).then(data=>{
+          mainApi.saveMovies(card).then(data=>{
             
             setCards(prev=> prev.map(item=> {
               if(data.movieId === item.id){

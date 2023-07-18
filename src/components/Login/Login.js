@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { signin } from "../../utils/MainApi";
+import { mainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from "../App/App";
 
 function Login() {
@@ -18,7 +18,7 @@ function Login() {
   const navigate = useNavigate();
 
   const hendleLogin = () => {
-    signin({email, password})
+    mainApi.signin({email, password})
     .then(data => {
       if(data.message) {
         console.error(data.message)

@@ -8,8 +8,7 @@ import Footer from "../Footer/Footer";
 // import { moviesData } from '../../constants/moviesData';
 import { useContext, useEffect, useState } from 'react';
 // import { apiRequestEmulation } from '../../utils/utils';
-import { getMovies } from "../../utils/MoviesApi";
-import { getSaveMovies } from "../../utils/MainApi";
+import { mainApi } from '../../utils/MainApi';
 import { useResize } from "../../utils/UseResize";
 import { CurrentUserContext } from "../App/App";
 
@@ -111,8 +110,8 @@ function Movies(props) {
         const MoviesSearchData = await getLocalStorage(titleName);
       
         if(!MoviesSearchData?.length){
-          const saves = await getSaveMovies();
-          const data = await getMovies();
+          const saves = await mainApi.getSaveMovies();
+          const data = await mainApi.getMovies();
           const convertSaves = await convertSaveMoviesData(data, saves)
           setSaveMoviesStore(convertSaves);
           setFindeSaveMoviesStore(convertSaves);
