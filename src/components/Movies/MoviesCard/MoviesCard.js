@@ -8,7 +8,6 @@ import saveButton from "../../../images/like-active.svg";
 import { CurrentUserContext } from "../../App/App";
 import { DURATION_CONVERT } from "../../../constants/constants";
 import { setLocalStorage } from "../../../utils/localStorage";
-import { deleteSaveMovies } from "../../../utils/MainApi";
 import { mainApi } from '../../utils/MainApi';
 
 const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
@@ -29,7 +28,7 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
         return newData
       })
       setFindeSaveMoviesStore(prev => prev.filter(item=> item.id !== card.id))
-      deleteSaveMovies(card._id)
+      mainApi.deleteSaveMovies(card._id)
     } else {
      
           mainApi.saveMovies(card).then(data=>{
@@ -70,7 +69,7 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
         return item
       }))
     deliteFilm(card._id)
-    deleteSaveMovies(card._id)
+    mainApi.deleteSaveMovies(card._id)
   }
   let src = `https://api.nomoreparties.co/${card.image.url}`;
 
