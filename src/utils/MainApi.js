@@ -1,7 +1,6 @@
 const options = {
-  baseUrl: "https://anastasiya.movies.nomoredomains.rocks",
+  baseUrl: "api.anastasiya.movies.nomoredomains.rocks",
   headers: {
-    Accept: "application/json",
     "Content-type": "application/json",
   },
 };
