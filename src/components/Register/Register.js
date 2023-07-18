@@ -75,6 +75,7 @@ function Register() {
     const pattern = /^[A-Za-zА-Яа-яЁё /s -]{4,}/
     if (!pattern.test(String(e.target.value).toLocaleLowerCase())) {
       setErrorMessageName("Неккоректное имя")
+      console.log("Неккоректное имя")
     } else {
       setErrorMessageName("")
     }

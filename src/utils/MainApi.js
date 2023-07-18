@@ -11,9 +11,11 @@ class MainApi {
     this._headers = options.headers;
   }
 
-   // Проверяем статус ответа сервера:
-   _responseStatus(response) {
-    return response.ok ? response.json() : response.json().then(err => Promise.reject(err.message));
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   signup(user) {
@@ -23,7 +25,7 @@ class MainApi {
       body: JSON.stringify(user)
     })
       .then(res => {
-        return this._checkResponseStatus(res)
+        return this._handleResponse(res)
       })
   }
 
@@ -35,7 +37,7 @@ class MainApi {
       body: JSON.stringify(user)
     })
       .then(res => {
-        return this._checkResponseStatus(res)
+        return this._handleResponse(res)
       })
   }
 
@@ -48,7 +50,7 @@ class MainApi {
         Authorization: `Bearer ${token}`
     })
     .then(res => {
-      return this._checkResponseStatus(res)
+      return this._handleResponse(res)
     })
   }
 
@@ -62,7 +64,7 @@ class MainApi {
         body: JSON.stringify(user)
       })
         .then(res => {
-          return this._checkResponseStatus(res)
+          return this._handleResponse(res)
         })
   }
 
@@ -75,7 +77,7 @@ class MainApi {
         Authorization: `Bearer ${token}`,
       })
         .then(res => {
-          return this._checkResponseStatus(res)
+          return this._handleResponse(res)
         })
   }
 
@@ -87,7 +89,7 @@ class MainApi {
         body: JSON.stringify(movieData)
       })
         .then(res => {
-          return this._checkResponseStatus(res)
+          return this._handleResponse(res)
         })
   }
 
@@ -100,7 +102,7 @@ class MainApi {
         Authorization: `Bearer ${token}`,
       })
         .then(res => {
-          return this._checkResponseStatus(res)
+          return this._handleResponse(res)
         })
   }
 
