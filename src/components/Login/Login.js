@@ -3,6 +3,8 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { mainApi } from '../../utils/MainApi';
+// import { useCurrentUserContext } from '../../contexts/CurrentUserContextProvider';
+// import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import { CurrentUserContext } from "../App/App";
 
 function Login() {
@@ -16,8 +18,8 @@ function Login() {
   const [inputValid, setInputValid] = useState(false)
   const { setLogedId } = useContext(CurrentUserContext);
   const navigate = useNavigate();
-
-  const hendleLogin = () => {
+  
+  const handleLogin = () => {
     mainApi.signin({email, password})
     .then(data => {
       if(data.message) {
@@ -77,7 +79,7 @@ function Login() {
         setErrorMessagePassword("")
       }
     }
-  
+
   return(
     <main className="login">
       <section className="login__box">
@@ -117,13 +119,13 @@ function Login() {
                          value={password}
                          onChange={e => passwordHandler(e)}
                    />
-                   {(passwordDirty && errorMessagePassword) && <div className="login__error">{errorMessagePassword}</div>}
+                  {(passwordDirty && errorMessagePassword) &&<div className="login__error">{errorMessagePassword}</div>}
               </label>
           </div>
           <div className="login__button-box">
               <button className="login__button" 
               type="submit" 
-              onClick={hendleLogin} 
+              onClick={handleLogin} 
               disabled={!inputValid}>Войти</button>
               <p className="login__link">
                   Ещё не зарегистрированы?

@@ -6,7 +6,6 @@ import HeaderAuth from "../HeaderAuth/HeaderAuth";
 import { CurrentUserContext } from "../App/App";
 
 const Header = () => {
-
   const { isLogged } = useContext(CurrentUserContext);
 
   return (
@@ -21,16 +20,12 @@ const Header = () => {
             <nav className="header__button-container">
           
               <Link to="/signup" className="header__button-signup">
-              {/* <button type="button" className="header__button"> */}
                 Регистрация
-                {/* </button> */}
               </Link>
 
-              {/* <button type="button" className="header__button"> */}
               <Link to="/signin" className="header__button-auth">
                 Войти
               </Link>
-              {/* </button> */}
             </nav>
           </div>
         </header>

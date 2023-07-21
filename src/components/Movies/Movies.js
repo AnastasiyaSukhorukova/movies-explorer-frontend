@@ -2,16 +2,18 @@ import React from "react";
 import "./Movies.css";
 import SearchMovies from "./SearchMovies/SearchMovies";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
-// import Preloader from "./Preloader/Preloader";
+import { useContext, useEffect, useState } from 'react';
+import { getMovies } from '../../utils/MoviesApi';
+import { mainApi } from '../../utils/MainApi';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-// import { moviesData } from '../../constants/moviesData';
-import { useContext, useEffect, useState } from 'react';
-// import { apiRequestEmulation } from '../../utils/utils';
-import { mainApi } from '../../utils/MainApi';
+import { useSavedMoviesContext } from '../../contexts/SavedMoviesContextProvider';
+import { getCards, movieFilter } from '../../utils/utils';
+import { useDebouncedFunction } from '../../utils/useDebouncedFunction';
+import Preloader from './Preloader/Preloader';
 import { useResize } from "../../utils/UseResize";
 import { CurrentUserContext } from "../App/App";
-
+import { getLocalStorage, setLocalStorage } from "../../utils/localStorage";
 import {
   MOVIES_CARDS_1280,
   MOVIES_CARDS_768,
@@ -20,9 +22,6 @@ import {
   ADD_MOVIES_CARD_768,
   ADD_MOVIES_CARD_480,
 } from "../../constants/constants";
-
-import { getLocalStorage, setLocalStorage } from "../../utils/localStorage";
-
 import { convertSaveMoviesData } from "../../utils/convertSaveMoviesData";
 
 function Movies(props) {
@@ -110,8 +109,8 @@ function Movies(props) {
         const MoviesSearchData = await getLocalStorage(titleName);
       
         if(!MoviesSearchData?.length){
-          const saves = await mainApi.getSaveMovies();
-          const data = await mainApi.getMovies();
+          const saves = await mainApi.getSavedMovies();
+          const data = await getMovies();
           const convertSaves = await convertSaveMoviesData(data, saves)
           setSaveMoviesStore(convertSaves);
           setFindeSaveMoviesStore(convertSaves);
@@ -180,27 +179,28 @@ function Movies(props) {
     }
     setCounterCard((prev) => prev + add);
   };
-  
   return (
     <>
-      <Header />
+     {/* <Header /> */}
       <main className="main__box">
       <SearchMovies
-      nameLocal={titleName}
-      {...props}
-      findeMovies={findeMovies}
-      switchCheked={switchCheked}
-      switchHandler={switchHandler}
-      />
-       {!preloader && (
-          <MoviesCardList
-            {...props}
-            titleName={titleName}
-            cards={films}
-            switchCheked={switchCheked}
-            counterCard={counterCard}
-            setDurationLength={setDurationLength}
-            isSearch={isSearch}
+
+nameLocal={titleName}
+{...props}
+findeMovies={findeMovies}
+switchCheked={switchCheked}
+switchHandler={switchHandler}
+/>
+{preloader && <Preloader />}
+      
+      {!preloader && ( <MoviesCardList
+          {...props}
+          titleName={titleName}
+          cards={films}
+          switchCheked={switchCheked}
+          counterCard={counterCard}
+          setDurationLength={setDurationLength}
+          isSearch={isSearch}
           />
         )}
          {isOther && (

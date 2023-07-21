@@ -5,7 +5,7 @@ const initialUserData = {
   email: '',
 };
 
-const CurrentUserContext = createContext(initialUserData);
+const CurrentUserContext = createContext();
 
 export const CurrentUserContextProvider = ({ children, ...props }) => {
   return <CurrentUserContext.Provider value={props.context}>{children}</CurrentUserContext.Provider>;

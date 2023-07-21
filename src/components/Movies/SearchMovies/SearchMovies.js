@@ -4,15 +4,17 @@ import React, { useState, useEffect } from "react";
 import "./SearchMovies.css"
 
 function SearchMovies(props) {
+
   const [filmDirty, setFilmDirty] = useState(false)
   const [errorMessageFilm, setErrorMessageFilm] = useState('Введите название фильма')
   const {searchText, searchHandler, findeMovies, switchHandler, switchCheked, nameLocal} = props;
-  
+
   useEffect(() => {
     if(filmDirty && searchText.length){
       setFilmDirty(false)
     }
   }, [searchText, filmDirty])
+
   
   return (
     <section>
@@ -24,7 +26,6 @@ function SearchMovies(props) {
             name="text"
             className="searchmovies__input"
             placeholder="Фильм"
-            required
             onChange={(event) => {searchHandler(event.target.value, nameLocal)}}
             value={searchText}
             onClick={e =>setFilmDirty(true)}

@@ -11,19 +11,26 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Error404 from '../Error404/Error404';
 import Movies from '../Movies/Movies';
-// import Header from '../Header/Header';
-// import Layout from '../Layout/Layout';
+import Header from '../Header/Header';
+import Layout from '../Layout/Layout';
+// import Preloader from "../Movies/Preloader/Preloader";
+
+
+// import { SavedMoviesContextProvider } from '../../contexts/SavedMoviesContextProvider';
+// import { CurrentUserContextProvider } from '../../contexts/CurrentUserContextProvider';
 
 import { mainApi } from '../../utils/MainApi';
 import Popup from '../Popup/Popup';
 export const CurrentUserContext = createContext();
-const userData = {name: '', email: ''}
+
+const initUser = {name: '', email: ''}
 
 function App() {
 
   const [searchText, setSearchText] = useState('')
-  const [user, setUser] = useState(userData);
+  const [user, setUser] = useState(initUser);
   const [logedId, setLogedId] = useState(true);
+  console.log(logedId);
   const [saveMoviesStore, setSaveMoviesStore] = useState([]);
   const [findeSaveMoviesStore, setFindeSaveMoviesStore] = useState([]);
   const [cards, setCards] = useState([])
@@ -75,28 +82,45 @@ function App() {
     }
   }, [])
 
+
   return (
     <BrowserRouter>
-    <CurrentUserContext.Provider value={{setSearchText, user, setUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
-        <div className='App'>
+    
+     <CurrentUserContext.Provider value={{setSearchText, user, setUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
+     <div className='App'>
           <Routes>
-            {/* по роуту / отображается страница «О проекте»; */}
-            {/* <Route exact path="/" element={
-            <Layout isLogged={!isLogged}>
-              <Main />
-            </Layout>} /> */}
 
-               <Route exact path="/" element={<Main/>} />
+               <Route exact path="/" element={
+               <Layout>
+               <Main/>
+               </Layout>} />
+
+               <Route exact path="/signup" 
+     
+                element={
+                  
+                  <ProtectedRoute logedId={!logedId}>
+                   <Register/>
+                  </ProtectedRoute>
+                 }
+              />
+
+            {/* по роутам /signin и /signup отображаются страницы авторизации и регистрации.     */}
+            <Route exact path="/signin" 
+            
+              element={
+                <ProtectedRoute logedId={!logedId}>
+                 <Login/>
+                </ProtectedRoute>
+               } 
+              />
 
               {/* по роуту /movies отображается страница «Фильмы»; */}
-              <Route exact path="/Movies" 
-                // element={
-                //     <Layout isLogged={isLogged}>
-                //       <Movies />
-                //     </Layout>
-                // }
+              <Route exact path="/movies" 
+              
                 element={
                   <ProtectedRoute logedId={logedId}>
+                    <Header isLogged={logedId}/>
                     <Movies searchText={searchText} searchHandler={searchHandler}/>
                   </ProtectedRoute>
                  }
@@ -104,51 +128,24 @@ function App() {
   
               {/* по роуту /saved-movies отображается страница «Сохранённые фильмы»; */}
               <Route exact path="/saved-movies" 
-              //   element={
-              //     <Layout isLogged={isLogged}>
-              //       <SavedMovies />
-              //     </Layout>
-              // }
+            
               element={
                 <ProtectedRoute logedId={logedId}>
+                  <Layout>
                   <SavedMovies searchText={searchText} searchHandler={searchHandler}/>
+                  </Layout>
                 </ProtectedRoute>
                }
               />
 
               <Route exact path="/profile" 
-                // element={
-                //   <>
-                //     <Header isLogged={isLogged}/>
-                //     <Profile onLogout={handleLogout} />
-                //   </>
-                // }
+               
                 element={
                   <ProtectedRoute logedId={logedId}>
+                    <>
+                    {/* <Header isLogged={logedId}/> */}
                    <Profile/>
-                  </ProtectedRoute>
-                 }
-              />
-
-            {/* по роутам /signin и /signup отображаются страницы авторизации и регистрации.     */}
-            <Route exact path="/signin" 
-              // element={
-              //   <Login onLogin={handleLogin}/>
-              // } 
-              element={
-                <ProtectedRoute logedId={!logedId}>
-                 <Login/>
-                </ProtectedRoute>
-               } 
-              />
-  
-              <Route exact path="/signup" 
-                // element={
-                //   <Register onRegister={handleRegister} />
-                // }
-                element={
-                  <ProtectedRoute logedId={!logedId}>
-                   <Register />
+                   </>
                   </ProtectedRoute>
                  }
               />
@@ -156,8 +153,13 @@ function App() {
               <Route exact path="*" element={<Error404/>} />
             </Routes>
             <Popup popupOpen={popupOpen} popupMessage={popupMessage} closePopup={closePopup} />
-          </div>
+            </div>
           </CurrentUserContext.Provider>
+           {/* <div className="preloader-wrapper">
+              <Preloader />
+            </div>
+            
+          </div> */}
           </BrowserRouter>
     );
 }

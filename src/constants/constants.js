@@ -1,3 +1,4 @@
+export const MOVIES_IMAGES_BASE_URL = 'https://api.nomoreparties.co';
 //Разрешение экрана
 export const SCREEN_SM = 480;
 export const SCREEN_MD = 768;

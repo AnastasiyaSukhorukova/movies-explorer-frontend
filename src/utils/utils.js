@@ -1,3 +1,12 @@
+import {
+  SCREEN_SM,
+  SCREEN_MD,
+  SCREEN_LG,
+  SCREEN_XL,
+  SCREEN_XXL,
+  SHORTS_MOVIES_DURATION,
+ } from '../constants/constants';
+
 export const convertDuration = (duration) => {
   const hours = Math.trunc(duration / 60);
   const munutes = duration % 60;
@@ -16,4 +25,29 @@ export const apiRequestEmulation = (isFail = false) => {
       resolve('успех');
     }, 500)
   })
+}
+
+export const getCards = () => {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= SCREEN_SM) {
+    return SCREEN_XXL;
+  } else if (screenWidth <= SCREEN_MD) {
+    return SCREEN_XL;
+  }
+
+  return SCREEN_LG;
+}
+
+const checkMovieDuration = (movieDuration, isShortsIncluded, shortsDurationCriteria = SHORTS_MOVIES_DURATION) => {
+  return (isShortsIncluded && (movieDuration <= shortsDurationCriteria)) || (!isShortsIncluded && (movieDuration > shortsDurationCriteria));
+}
+
+const filterMovieByQuerry = (movie, searchQuerry) => {
+  const lowerQuerry = searchQuerry.toLowerCase();
+  return movie.nameRU.toLowerCase().includes(lowerQuerry);
+}
+
+export const movieFilter = (movie, { querry, includeShorts }) => {
+  return checkMovieDuration(movie.duration, includeShorts) && filterMovieByQuerry(movie, querry);
 }

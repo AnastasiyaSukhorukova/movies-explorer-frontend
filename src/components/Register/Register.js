@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState , useEffect, useContext} from "react";
 import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { mainApi } from '../../utils/MainApi';
+import {mainApi} from "../../utils/MainApi";
+// import { useCurrentUserContext } from '../../contexts/CurrentUserContextProvider';
+// import { useFormWithValidation } from '../../utils/useFormWithValidation';
+// import Preloader from "../Movies/Preloader/Preloader";
 import { CurrentUserContext } from "../App/App";
 
 function Register() {
@@ -30,15 +33,17 @@ function Register() {
         .then(data => {
           if(data.message) {
             console.error(data.message)
+            console.log(data)
           } else {
             localStorage.setItem('token', data.token)
+            console.log(data.token)
             setLogedId(true)
             navigate("/movies")
           }
         });
       }
-  }).catch(error => {
-      console.log('Ошибка при регистрации', error)
+  }).catch(error=>{
+      console.log('handleRegister error ', error)
   });
   }
 
@@ -75,7 +80,6 @@ function Register() {
     const pattern = /^[A-Za-zА-Яа-яЁё /s -]{4,}/
     if (!pattern.test(String(e.target.value).toLocaleLowerCase())) {
       setErrorMessageName("Неккоректное имя")
-      console.log("Неккоректное имя")
     } else {
       setErrorMessageName("")
     }
@@ -104,7 +108,6 @@ function Register() {
         setErrorMessagePassword("")
       }
     }
-
   return(
     <main className="register">
       <section className="register__box">
@@ -116,10 +119,10 @@ function Register() {
 
         <h1 className="register__title">Добро пожаловать!</h1>
 
-        <form noValidate className="register__form" name="register-form" onSubmit={e=> e.preventDefault()}>
+        <form noValidate className="register__form" name="register" onSubmit={e=> e.preventDefault()}>
           <div className="register__field">
           <label>
-                  <span className="register__name">Имя</span>
+                  <span className="register__name"  htmlFor="name">Имя</span>
                   <input 
                         className="register__input"
                          type="text" 
@@ -128,15 +131,14 @@ function Register() {
                          autoComplete="off"
                          minLength={4}
                          maxLength={30}
-                         pattern="^[A-Za-zА-Яа-яЁё /s -]{4,30}"
                          required={true}
                          value={name}
                          onChange={e => nameHandler(e)}
                    />
-                   {(nameDirty && errorMessageName) && <span className="register__field-error" >{errorMessageName}</span>}
+              {(nameDirty && errorMessageName) &&<span className="register__field-error" >{errorMessageName}</span>}
               </label>
               <label>
-                  <span className="register__email">E-mail</span>
+                  <span className="register__email" htmlFor="email">E-mail</span>
                   <input 
                         className="register__input"
                          type="email" 
@@ -150,10 +152,10 @@ function Register() {
                          value={email}
                          onChange={e => emailHandler(e)}
                   />
-                  {(emailDirty && errorMessageEmail) && <span className="register__field-error">{errorMessageEmail}</span>}
+               {(emailDirty && errorMessageEmail) &&<span className="register__field-error">{errorMessageEmail}</span>}
               </label>
               <label>
-                    <label className="register__password">Пароль</label>
+                    <label className="register__password" htmlFor="password">Пароль</label>
                     <input 
                         className="register__input"
                          type="password" 
@@ -169,13 +171,18 @@ function Register() {
               {(passwordDirty && errorMessagePassword) &&<span className="register__field-error" >{errorMessagePassword}</span>}
               </label>
           </div>
+
           <div className="register__button-box">
-              <button 
-              className="register__button"
-              type="submit"
-              onClick={handleRegister}
-              disabled={!inputValid}>
-                Зарегистрироваться</button>
+         
+            <button
+                className={inputValid ? "register__button": "register__button register__button_disabled"}
+                type="submit"
+                disabled={!inputValid}
+                onClick={handleRegister}
+              >
+                Зарегистрироваться
+              </button>
+        
               <p className="register__link">
                   Уже зарегистрированы?
                   <Link to="/signin" className="register__login">Войти</Link>
