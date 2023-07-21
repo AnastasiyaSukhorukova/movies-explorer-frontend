@@ -80,6 +80,7 @@
   margin: 0;
   border: none;
   cursor: pointer;
+  background-color: #202020;
 }
 
 .moviesCard__button-del {

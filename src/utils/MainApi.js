@@ -73,7 +73,6 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/movies`, {
         method: 'GET',
-        // credentials: 'include',
         headers: this._headers,
         Authorization: `Bearer ${token}`,
       })

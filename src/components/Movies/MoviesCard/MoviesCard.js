@@ -31,10 +31,10 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
         return newData
       })
       setFindeSaveMoviesStore(prev => prev.filter(item=> item.id !== card.id))
-      mainApi.deleteSaveMovies(card._id)
+      mainApi.deleteMovie(card._id)
     } else {
      
-      mainApi.saveMovies(card).then(data=>{
+      mainApi.saveMovie(card).then(data=>{
             
             setCards(prev=> prev.map(item=> {
               if(data.movieId === item.id){

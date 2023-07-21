@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./Profile.css";
 import { mainApi } from '../../utils/MainApi';
-// import { useCurrentUserContext } from '../../contexts/CurrentUserContextProvider';
-// import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from "../App/App";
 import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
