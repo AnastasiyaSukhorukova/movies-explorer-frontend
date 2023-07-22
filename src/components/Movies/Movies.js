@@ -5,8 +5,6 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import { useContext, useEffect, useState } from 'react';
 import { getMovies } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import Preloader from './Preloader/Preloader';
 import { useResize } from "../../utils/UseResize";
 import { CurrentUserContext } from "../App/App";
@@ -178,7 +176,6 @@ function Movies(props) {
   };
   return (
     <>
-     {/* <Header /> */}
       <main className="main__box">
       <SearchMovies
 
@@ -206,7 +203,6 @@ switchHandler={switchHandler}
             </button>
             )}
       </main>
-      <Footer />
     </>
   );
 }

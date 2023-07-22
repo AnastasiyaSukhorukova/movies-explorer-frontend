@@ -3,8 +3,6 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { mainApi } from '../../utils/MainApi';
-// import { useCurrentUserContext } from '../../contexts/CurrentUserContextProvider';
-// import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import { CurrentUserContext } from "../App/App";
 
 function Login() {

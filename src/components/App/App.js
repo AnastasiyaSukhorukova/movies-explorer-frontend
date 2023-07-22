@@ -11,13 +11,8 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Error404 from '../Error404/Error404';
 import Movies from '../Movies/Movies';
-import Header from '../Header/Header';
 import Layout from '../Layout/Layout';
-// import Preloader from "../Movies/Preloader/Preloader";
-
-
-// import { SavedMoviesContextProvider } from '../../contexts/SavedMoviesContextProvider';
-// import { CurrentUserContextProvider } from '../../contexts/CurrentUserContextProvider';
+import Preloader from '../Movies/Preloader/Preloader';
 
 import { mainApi } from '../../utils/MainApi';
 import Popup from '../Popup/Popup';
@@ -28,7 +23,7 @@ const initUser = {name: '', email: ''}
 function App() {
 
   const [searchText, setSearchText] = useState('')
-  const [user, setUser] = useState(initUser);
+  const [currentUser, setcurrentUser] = useState(initUser);
   const [logedId, setLogedId] = useState(true);
   console.log(logedId);
   const [saveMoviesStore, setSaveMoviesStore] = useState([]);
@@ -86,12 +81,12 @@ function App() {
   return (
     <BrowserRouter>
     
-     <CurrentUserContext.Provider value={{setSearchText, user, setUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
+     <CurrentUserContext.Provider value={{setSearchText, currentUser, setcurrentUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
      <div className='App'>
           <Routes>
 
                <Route exact path="/" element={
-               <Layout>
+               <Layout isLogged={!logedId}>
                <Main/>
                </Layout>} />
 
@@ -120,8 +115,9 @@ function App() {
               
                 element={
                   <ProtectedRoute logedId={logedId}>
-                    <Header isLogged={logedId}/>
+                    <Layout isLogged={logedId}>
                     <Movies searchText={searchText} searchHandler={searchHandler}/>
+                    </Layout>
                   </ProtectedRoute>
                  }
               />
@@ -131,7 +127,7 @@ function App() {
             
               element={
                 <ProtectedRoute logedId={logedId}>
-                  <Layout>
+                  <Layout isLogged={logedId}>
                   <SavedMovies searchText={searchText} searchHandler={searchHandler}/>
                   </Layout>
                 </ProtectedRoute>
@@ -142,10 +138,11 @@ function App() {
                
                 element={
                   <ProtectedRoute logedId={logedId}>
-                    <>
-                    {/* <Header isLogged={logedId}/> */}
+                    
+                  <Layout isLogged={logedId}>
                    <Profile/>
-                   </>
+                   </Layout>
+                  
                   </ProtectedRoute>
                  }
               />
@@ -157,9 +154,8 @@ function App() {
           </CurrentUserContext.Provider>
            {/* <div className="preloader-wrapper">
               <Preloader />
-            </div>
+            </div> */}
             
-          </div> */}
           </BrowserRouter>
     );
 }

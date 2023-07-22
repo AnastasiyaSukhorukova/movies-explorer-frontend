@@ -6,7 +6,7 @@ import "./SearchMovies.css"
 function SearchMovies(props) {
 
   const [filmDirty, setFilmDirty] = useState(false)
-  const [errorMessageFilm, setErrorMessageFilm] = useState('Введите название фильма')
+  const [errorMessageFilm, setErrorMessageFilm] = useState('Нужно ввести ключевое слово')
   const {searchText, searchHandler, findeMovies, switchHandler, switchCheked, nameLocal} = props;
 
   useEffect(() => {

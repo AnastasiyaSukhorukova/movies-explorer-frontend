@@ -4,16 +4,20 @@ import { mainApi } from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from "../App/App";
 import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
-import Header from "../Header/Header";
 
 const Profile = () => {
   const { user, setUser, setLogedId, openPopup } = useContext(CurrentUserContext);
   
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
-  const [isUpdate, setIsUpdate] = useState(false)
+  const [isSameValues, setIsSameValues] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleMakeEditable = () => {
+    setIsEditing(true);
+  }
 
   useEffect(()=>{
     mainApi.getProfile()
@@ -28,13 +32,15 @@ const Profile = () => {
 
   useEffect(() => {
     if((user.name !== name || user.email !== email)){
-      setIsUpdate(true)
+      setIsSameValues(true)
     } else {
-      setIsUpdate(false)
+      setIsSameValues(false)
     }
   }, [user, email, name])
   
-  const handleProfileUpdate = (name, email) => {
+  const handleProfileUpdate = (e) => {
+    e.preventDefault();
+
     mainApi.editUser({name: name, email: email})
     .then(data => {
       setUser(data);
@@ -46,7 +52,12 @@ const Profile = () => {
     })
     .catch(error => {
       console.error('handleProfileUpdate error ', error)
-    });
+    })
+    .finally(() => {
+      setIsSameValues(true);
+    })
+
+    setIsEditing(false);
   }
 
   const signOut = () => {
@@ -57,16 +68,15 @@ const Profile = () => {
   }
   return(
     <>
-    <Header isLogged={true}/>
     <main className="profile">
       <section className='profile__content'>
         <h1 className='profile__title'>Привет, {user?.name}!</h1>
-        <form className='profile__form' onSubmit={e => e.preventDefault()}>
+        <form className='profile__form' onSubmit={handleProfileUpdate}>
             <fieldset className='profile__fieldset'>
                 <label className='profile__fields'>
                     <p className='profile__input-name'>Имя</p>
                     <input className='profile__input'
-                        // disabled={!isEditing}
+                        disabled={!isEditing}
                         type='text'
                         name='name'
                         placeholder='Имя'
@@ -81,7 +91,7 @@ const Profile = () => {
                 <label className='profile__fields'>
                     <p className='profile__input-email'>E-mail</p>
                     <input className='profile__input'
-                        // disabled={!isEditing}
+                        disabled={!isEditing}
                         type='email'
                         name='email'
                         value={email}
@@ -91,22 +101,21 @@ const Profile = () => {
                 </label>
             </fieldset>
 
-            {/* {
+            {
           isEditing
             ? <button
                 type="submit"
                 className="profile__submit"
-                disabled={isSameValues || !isValid}
               >
                 Сохранить
-              </button> */}
-             <div className="profile__nav">
+              </button>
+            : <div className="profile__nav">
                 <button
                   type="button"
                   className="profile__button profile__button_type_edit"
-                  onClick={()=>handleProfileUpdate(name, email)} disabled={!isUpdate}
+                  onClick={handleMakeEditable}
                 >
-                  Редактировать
+                 Редактировать
                 </button>
                 <button
                   type="button"
@@ -116,6 +125,7 @@ const Profile = () => {
                   Выйти из аккаунта
                 </button>
               </div>
+}
         
         </form>
       </section>

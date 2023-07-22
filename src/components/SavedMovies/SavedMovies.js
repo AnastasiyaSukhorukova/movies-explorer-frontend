@@ -3,13 +3,9 @@ import { useEffect, useState, useContext  } from 'react';
 import SearchMovies from "../Movies/SearchMovies/SearchMovies";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Preloader from "../Movies/Preloader/Preloader";
-import { apiRequestEmulation } from '../../utils/utils';
-import { savedMoviesData } from '../../constants/saveMoviesData';
 import "./SavedMovies.css";
 import { getMovies } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import { useResize } from "../../utils/UseResize";
 import { CurrentUserContext } from "../App/App";
 import {

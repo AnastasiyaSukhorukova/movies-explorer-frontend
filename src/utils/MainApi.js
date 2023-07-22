@@ -1,12 +1,3 @@
-// const options = {
-//   baseUrl: "https://api.anastasiya.movies.nomoredomains.rocks",
-//   headers: {
-//     // authorization: "f1b678bd-8daa-4ddc-9a95-4730e9a93182",
-//     Accept: "application/json",
-//     "Content-type": "application/json",
-//   },
-// };
-
 class MainApi {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -34,7 +25,6 @@ class MainApi {
   signin(user) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      // credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(user)
     })
@@ -47,8 +37,10 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      headers: this._headers,
-      Authorization: `Bearer ${token}`,
+      headers: { 
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+        }
     })
     .then(res => {
       return this._handleResponse(res)
@@ -59,10 +51,11 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
-        credentials: 'include',
-        headers: this._headers,
-        body: JSON.stringify(user),
-        Authorization: `Bearer ${token}`,
+        headers: { 
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+          },
+        body: JSON.stringify(user)
       })
         .then(res => {
           return this._handleResponse(res)
@@ -73,8 +66,10 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/movies`, {
         method: 'GET',
-        headers: this._headers,
+        headers: { 
+        "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
+        }
       })
     .then(response => {
       if(response.status === 401){
@@ -94,9 +89,10 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/movies`, {
         method: 'POST',
-        // credentials: 'include',
-        headers: this._headers,
-        Authorization: `Bearer ${token}`,
+        headers: { 
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+          },
         body: JSON.stringify({
         country: data.country,
       director: data.director,
@@ -120,9 +116,10 @@ class MainApi {
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
         method: 'DELETE',
-        // credentials: 'include',
-        headers: this._headers,
-        Authorization: `Bearer ${token}`,
+        headers: { 
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+          }
       })
         .then(res => {
           return this._handleResponse(res)

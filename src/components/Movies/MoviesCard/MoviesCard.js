@@ -6,10 +6,8 @@ import saveFilmButton from "../../../images/like-no-active.svg";
 import deleteFilmButton from "../../../images/deleteFilmButton.svg";
 import saveButton from "../../../images/like-active.svg";
 import { CurrentUserContext } from "../../App/App";
-// import { DURATION_CONVERT } from "../../../constants/constants";
-// import { setLocalStorage } from "../../../utils/localStorage";
 import { mainApi } from '../../../utils/MainApi';
-import { useSavedMoviesContext } from '../../../contexts/SavedMoviesContextProvider';
+
 import { MOVIES_IMAGES_BASE_URL } from '../../../constants/constants';
 import { setLocalStorage } from "../../../utils/localStorage";
 
@@ -72,7 +70,7 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
         return item
       }))
     deliteFilm(card._id)
-    mainApi.deleteSaveMovies(card._id)
+    mainApi.deleteMovie(card._id)
   }
   let src = `https://api.nomoreparties.co/${card.image.url}`;
 
