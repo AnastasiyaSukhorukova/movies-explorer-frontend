@@ -12,7 +12,6 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Error404 from '../Error404/Error404';
 import Movies from '../Movies/Movies';
 import Layout from '../Layout/Layout';
-import Preloader from '../Movies/Preloader/Preloader';
 
 import { mainApi } from '../../utils/MainApi';
 import Popup from '../Popup/Popup';
@@ -25,7 +24,6 @@ function App() {
   const [searchText, setSearchText] = useState('')
   const [currentUser, setcurrentUser] = useState(initUser);
   const [logedId, setLogedId] = useState(true);
-  console.log(logedId);
   const [saveMoviesStore, setSaveMoviesStore] = useState([]);
   const [findeSaveMoviesStore, setFindeSaveMoviesStore] = useState([]);
   const [cards, setCards] = useState([])
@@ -86,7 +84,7 @@ function App() {
           <Routes>
 
                <Route exact path="/" element={
-               <Layout isLogged={!logedId}>
+               <Layout>
                <Main/>
                </Layout>} />
 

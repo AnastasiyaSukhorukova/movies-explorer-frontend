@@ -20,7 +20,7 @@ import {
 import { convertSaveMoviesData } from "../../utils/convertSaveMoviesData";
 
 function Movies(props) {
-
+  
   const [preloader, setPreloader] = useState(false);
   const [counterCard, setCounterCard] = useState(0);
   const [switchCheked, setSwitchCheked] = useState(false);
@@ -148,6 +148,7 @@ function Movies(props) {
 
   const findeMovies = (text) => {
     setPreloader(true);
+    console.log(setPreloader)
     if (text.length < 2) {
       setFilms(cards);
     } else {
@@ -185,6 +186,7 @@ findeMovies={findeMovies}
 switchCheked={switchCheked}
 switchHandler={switchHandler}
 />
+
 {preloader && <Preloader />}
       
       {!preloader && ( <MoviesCardList

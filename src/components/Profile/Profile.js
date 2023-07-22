@@ -6,10 +6,10 @@ import { CurrentUserContext } from "../App/App";
 import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
 
 const Profile = () => {
-  const { user, setUser, setLogedId, openPopup } = useContext(CurrentUserContext);
+  const { currentUser, setcurrentUser, setLogedId, openPopup } = useContext(CurrentUserContext);
   
-  const [name, setName] = useState(user.name)
-  const [email, setEmail] = useState(user.email)
+  const [name, setName] = useState(currentUser.name)
+  const [email, setEmail] = useState(currentUser.email)
   const [isSameValues, setIsSameValues] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -22,7 +22,7 @@ const Profile = () => {
   useEffect(()=>{
     mainApi.getProfile()
     .then(data => {
-      setUser(data);
+      setcurrentUser(data);
       setName(data.name)
       setEmail(data.email)
     }).catch(error=>{
@@ -31,19 +31,19 @@ const Profile = () => {
   },[])
 
   useEffect(() => {
-    if((user.name !== name || user.email !== email)){
+    if((currentUser.name !== name || currentUser.email !== email)){
       setIsSameValues(true)
     } else {
       setIsSameValues(false)
     }
-  }, [user, email, name])
+  }, [currentUser, email, name])
   
   const handleProfileUpdate = (e) => {
     e.preventDefault();
 
     mainApi.editUser({name: name, email: email})
     .then(data => {
-      setUser(data);
+      setcurrentUser(data);
       if (data.message) {
         openPopup(data.message)
       } else {
@@ -70,7 +70,7 @@ const Profile = () => {
     <>
     <main className="profile">
       <section className='profile__content'>
-        <h1 className='profile__title'>Привет, {user?.name}!</h1>
+        <h1 className='profile__title'>Привет, {currentUser?.name}!</h1>
         <form className='profile__form' onSubmit={handleProfileUpdate}>
             <fieldset className='profile__fieldset'>
                 <label className='profile__fields'>
