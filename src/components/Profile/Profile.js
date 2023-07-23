@@ -1,37 +1,78 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Profile.css";
-import { useState } from 'react';
+import { mainApi } from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
+import { CurrentUserContext } from "../App/App";
+import { PROFILE_UPDATE_MESSAGE } from "../../constants/constants"
 
-const Profile = ({ onLogout }) => {
-
-  const [user, setUser] = useState({name: 'Анастасия', email: 'email@mail.ru'});
-
+const Profile = () => {
+  const { currentUser, setcurrentUser, setLogedId, openPopup } = useContext(CurrentUserContext);
+  
+  const [name, setName] = useState(currentUser.name)
+  const [email, setEmail] = useState(currentUser.email)
+  const [isSameValues, setIsSameValues] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleMakeEditable = () => {
     setIsEditing(true);
   }
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setUser({...user, [name]: value});
-  }
+  useEffect(()=>{
+    mainApi.getProfile()
+    .then(data => {
+      setcurrentUser(data);
+      setName(data.name)
+      setEmail(data.email)
+    }).catch(error=>{
+        console.error('getProfile error ', error)
+    });
+  },[])
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if((currentUser.name !== name || currentUser.email !== email)){
+      console.log(currentUser.name !== name)
+      setIsSameValues(true)
+    } else {
+      setIsSameValues(false)
+    }
+  }, [currentUser, email, name])
+  
+  const handleProfileUpdate = (e) => {
     e.preventDefault();
-    console.log('Profile edit form submitted');
+
+    mainApi.editUser({name: name, email: email})
+    .then(data => {
+      setcurrentUser(data);
+      if (data.message) {
+        openPopup(data.message)
+      } else {
+        openPopup(PROFILE_UPDATE_MESSAGE)
+      }
+    })
+    .catch(error => {
+      console.error('handleProfileUpdate error ', error)
+    })
+    .finally(() => {
+      setIsSameValues(true);
+    })
+
     setIsEditing(false);
   }
 
-  const handleLogout = () => {
-    onLogout();
+  const signOut = () => {
+    localStorage.clear();
+    setLogedId(false);
+    navigate("/");
+    window.location.reload();
   }
-
   return(
+    <>
     <main className="profile">
       <section className='profile__content'>
-        <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
-        <form className='profile__form' onSubmit={handleSubmit}>
+        <h1 className='profile__title'>Привет, {currentUser?.name}!</h1>
+        <form className='profile__form' onSubmit={handleProfileUpdate}>
             <fieldset className='profile__fieldset'>
                 <label className='profile__fields'>
                     <p className='profile__input-name'>Имя</p>
@@ -42,9 +83,9 @@ const Profile = ({ onLogout }) => {
                         placeholder='Имя'
                         minLength={2}
                         maxLength={30}
-                        defaultValue={user.name || ''}
-                        onChange={handleChange}
+                        value={name}
                         required
+                        onChange={(event)=> setName(event.target.value)}
                     />
                 </label>
                 <div className="profile__line"></div>
@@ -54,8 +95,8 @@ const Profile = ({ onLogout }) => {
                         disabled={!isEditing}
                         type='email'
                         name='email'
-                        value={user.email || ''}
-                        onChange={handleChange}
+                        value={email}
+                        onChange={(event)=> setEmail(event.target.value)}
                         placeholder='E-mail'
                         required />
                 </label>
@@ -66,7 +107,7 @@ const Profile = ({ onLogout }) => {
             ? <button
                 type="submit"
                 className="profile__submit"
-                // disabled={isSameValues || !isValid}
+                disabled={!isSameValues}
               >
                 Сохранить
               </button>
@@ -76,25 +117,22 @@ const Profile = ({ onLogout }) => {
                   className="profile__button profile__button_type_edit"
                   onClick={handleMakeEditable}
                 >
-                  Редактировать
+                 Редактировать
                 </button>
                 <button
                   type="button"
                   className="profile__button profile__button_type_logout"
-                  onClick={handleLogout}
+                  onClick={signOut}
                 >
                   Выйти из аккаунта
                 </button>
               </div>
-        }
-
-            {/* <div className='profile__nav'>
-                <button className='profile__button_edit' type='submit' onClick={handleMakeEditable}>Редактировать</button>
-                <button className='profile__button_signin' type='button' onClick={handleLogout}>Выйти из аккаунта</button>
-            </div> */}
+}
+        
         </form>
       </section>
     </main>
+  </>
   );
 }
 

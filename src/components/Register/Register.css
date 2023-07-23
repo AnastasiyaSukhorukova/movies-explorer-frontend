@@ -141,7 +141,7 @@
   opacity: 0.7;
 }
 
-.register__button:disabled {
+.register__button_disabled {
   background-color: #A0A0A0;
   opacity: 0.3;
 }

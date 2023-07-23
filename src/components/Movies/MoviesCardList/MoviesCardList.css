@@ -15,6 +15,11 @@
   list-style: none;
 }
 
+.movieCardList__text {
+  color: #fff;
+  margin: auto;
+}
+
 @media screen and (max-width: 769px) {
   .movieCardList__box{
     grid-template-columns: repeat(auto-fill, 339px);

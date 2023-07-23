@@ -1,10 +1,113 @@
-import React from "react";
+import React, { useState , useEffect, useContext} from "react";
 import "./Register.css";
 import logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {mainApi} from "../../utils/MainApi";
+// import { useCurrentUserContext } from '../../contexts/CurrentUserContextProvider';
+// import { useFormWithValidation } from '../../utils/useFormWithValidation';
+// import Preloader from "../Movies/Preloader/Preloader";
+import { CurrentUserContext } from "../App/App";
 
 function Register() {
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+  const [nameDirty, setNameDirty] = useState(false)
+  const [emailDirty, setEmailDirty] = useState(false)
+  const [passwordDirty, setPasswordDirty] = useState(false)
+  const [errorMessageName, setErrorMessageName] = useState('Введите имя')
+  const [errorMessageEmail, setErrorMessageEmail] = useState('Введите email')
+  const [errorMessagePassword, setErrorMessagePassword] = useState('Введите пароль')
+  const [inputValid, setInputValid] = useState(false)
+  const { setLogedId, openPopup } = useContext(CurrentUserContext);
+
+  const handleRegister = async () => {
+    mainApi.signup({name, email, password})
+    .then(data => {
+      if(data.message){
+        openPopup(data.message)
+      } else {
+        mainApi.signin({email, password})
+        .then(data => {
+          if(data.message) {
+            console.error(data.message)
+            console.log(data)
+          } else {
+            localStorage.setItem('token', data.token)
+            console.log(data.token)
+            setLogedId(true)
+            navigate("/movies")
+          }
+        });
+      }
+  }).catch(error=>{
+      console.log('handleRegister error ', error)
+  });
+  }
+
+  useEffect(() => {
+    if (errorMessageName || errorMessageEmail || errorMessagePassword) {
+      setInputValid(false)
+    } else {
+      setInputValid(true)
+    }
+  }, [errorMessageName, errorMessageEmail, errorMessagePassword])
+
+ 
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case "name": 
+        setNameDirty(true)
+        break
+
+      case "email": 
+        setEmailDirty(true)
+        break
+
+      case "password": 
+        setPasswordDirty(true)
+        break
+
+        // no default
+    }
+  }
+
+  const nameHandler = (e) => {
+    blurHandler(e)
+    setName(e.target.value)
+    const pattern = /^[A-Za-zА-Яа-яЁё /s -]{4,}/
+    if (!pattern.test(String(e.target.value).toLocaleLowerCase())) {
+      setErrorMessageName("Неккоректное имя")
+    } else {
+      setErrorMessageName("")
+    }
+  }
+  
+  const emailHandler = (e) => {
+    blurHandler(e)
+    setEmail(e.target.value)
+    const pattern = /^[\w]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/
+    if (!pattern.test(String(e.target.value).toLocaleLowerCase())) {
+      setErrorMessageEmail("Неккоректный email")
+    } else {
+      setErrorMessageEmail("")
+    }
+  }
+
+  const passwordHandler = (e) => {
+    blurHandler(e)
+    setPassword(e.target.value)
+      if (e.target.value.length < 4 || e.target.value.length > 8) {
+        setErrorMessagePassword("Пароль должен содержать от 4 до 8 символов")
+        if (!e.target.value) {
+          setErrorMessagePassword("Пароль не может быть пустым")
+        }
+      } else {
+        setErrorMessagePassword("")
+      }
+    }
   return(
     <main className="register">
       <section className="register__box">
@@ -16,10 +119,10 @@ function Register() {
 
         <h1 className="register__title">Добро пожаловать!</h1>
 
-        <form noValidate className="register__form" name="register-form">
+        <form noValidate className="register__form" name="register" onSubmit={e=> e.preventDefault()}>
           <div className="register__field">
           <label>
-                  <span className="register__name">Имя</span>
+                  <span className="register__name"  htmlFor="name">Имя</span>
                   <input 
                         className="register__input"
                          type="text" 
@@ -28,14 +131,14 @@ function Register() {
                          autoComplete="off"
                          minLength={4}
                          maxLength={30}
-                         pattern="^[A-Za-zА-Яа-яЁё /s -]{4,30}"
                          required={true}
-                         defaultValue={'Виталий'}
+                         value={name}
+                         onChange={e => nameHandler(e)}
                    />
-                   <span className="register__field-error" ></span>
+              {(nameDirty && errorMessageName) &&<span className="register__field-error" >{errorMessageName}</span>}
               </label>
               <label>
-                  <span className="register__email">E-mail</span>
+                  <span className="register__email" htmlFor="email">E-mail</span>
                   <input 
                         className="register__input"
                          type="email" 
@@ -46,15 +149,15 @@ function Register() {
                          required={true}
                          minLength={2}
                          maxLength={30}
-                         defaultValue={'pochta@yandex.ru'}
-                        //  onChange={handleChange}
+                         value={email}
+                         onChange={e => emailHandler(e)}
                   />
-                  <span className="register__field-error" ></span>
+               {(emailDirty && errorMessageEmail) &&<span className="register__field-error">{errorMessageEmail}</span>}
               </label>
               <label>
-                    <span className="register__password">Пароль</span>
+                    <label className="register__password" htmlFor="password">Пароль</label>
                     <input 
-                          className="register__input register__input-invalid"
+                        className="register__input"
                          type="password" 
                          name="password" 
                          placeholder="Введите Ваш Пароль"
@@ -62,17 +165,24 @@ function Register() {
                          minLength={4}
                          maxLength={8}
                          required={true}
-                         defaultValue={'••••••••••••••'}
-                        //  onChange={handleChange}
+                         value={password}
+                         onChange={e => passwordHandler(e)}
                     />
+              {(passwordDirty && errorMessagePassword) &&<span className="register__field-error" >{errorMessagePassword}</span>}
               </label>
-              <span className="register__field-error" >{'Что-то пошло не так...'}</span>
           </div>
+
           <div className="register__button-box">
-              <button 
-              className="register__button"
-              type="button">
-                Зарегистрироваться</button>
+         
+            <button
+                className={inputValid ? "register__button": "register__button register__button_disabled"}
+                type="submit"
+                disabled={!inputValid}
+                onClick={handleRegister}
+              >
+                Зарегистрироваться
+              </button>
+        
               <p className="register__link">
                   Уже зарегистрированы?
                   <Link to="/signin" className="register__login">Войти</Link>

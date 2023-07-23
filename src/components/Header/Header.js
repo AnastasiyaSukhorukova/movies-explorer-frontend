@@ -1,4 +1,3 @@
-// import React, { useContext } from "react";
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
@@ -9,8 +8,8 @@ const Header = ({ isLogged }) => {
 
   return (
     <>
-        {!isLogged && <HeaderAuth />}
-        {isLogged && (
+        {isLogged && <HeaderAuth />}
+        {!isLogged && (
         <header className="header">
           <div className="header__container">
             <Link to="/">
@@ -19,16 +18,12 @@ const Header = ({ isLogged }) => {
             <nav className="header__button-container">
           
               <Link to="/signup" className="header__button-signup">
-              {/* <button type="button" className="header__button"> */}
                 Регистрация
-                {/* </button> */}
               </Link>
 
-              {/* <button type="button" className="header__button"> */}
               <Link to="/signin" className="header__button-auth">
                 Войти
               </Link>
-              {/* </button> */}
             </nav>
           </div>
         </header>

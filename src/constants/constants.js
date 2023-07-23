@@ -1,3 +1,4 @@
+export const MOVIES_IMAGES_BASE_URL = 'https://api.nomoreparties.co';
 //Разрешение экрана
 export const SCREEN_SM = 480;
 export const SCREEN_MD = 768;
@@ -14,3 +15,9 @@ export const MOVIES_CARDS_480 = 5;
 export const ADD_MOVIES_CARD_1280 = 3;
 export const ADD_MOVIES_CARD_768 = 2;
 export const ADD_MOVIES_CARD_480 = 1;
+
+//Длительность короткометражек (40 минут)
+export const SHORTS_MOVIES_DURATION = 41;
+
+//Сообщения для пользователя
+export const PROFILE_UPDATE_MESSAGE = "Изменения в профиль внесены!"

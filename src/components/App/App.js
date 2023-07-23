@@ -1,8 +1,8 @@
 // корневой компонент приложения, его создаёт CRA.
 import '../App/App.css';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { createContext, useState, useEffect } from 'react';
+import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 import Main from '../Main/Main';
 import Login from '../Login/Login';
@@ -11,80 +11,150 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Error404 from '../Error404/Error404';
 import Movies from '../Movies/Movies';
-import Header from '../Header/Header';
 import Layout from '../Layout/Layout';
+
+import { mainApi } from '../../utils/MainApi';
+import Popup from '../Popup/Popup';
+export const CurrentUserContext = createContext();
+
+const initUser = {name: '', email: ''}
 
 function App() {
 
-  const [isLogged, setIsLogged] = useState(false);
-  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState('')
+  const [currentUser, setcurrentUser] = useState(initUser);
+  const [logedId, setLogedId] = useState(true);
+  const [saveMoviesStore, setSaveMoviesStore] = useState([]);
+  const [findeSaveMoviesStore, setFindeSaveMoviesStore] = useState([]);
+  const [cards, setCards] = useState([])
+  const [films, setFilms] = useState([])
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [popupMessage, setPopupMessage] = useState("");
 
-  const handleRegister = () => {
-    navigate("/signin", {replace: true});
+  const closePopup = () => {
+    setPopupOpen(false);
+    setPopupMessage("");
+  };
+
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setPopupOpen(true);
+  };
+  
+  const searchHandler = (text, name) =>{
+    
+    if(name === 'MoviesSearch'){
+      const settings =  localStorage.getItem(`settings_${name}`)
+      if(settings){
+        const obj = JSON.parse(settings);
+        obj.searchText = text;
+        localStorage.setItem(`settings_${name}`, JSON.stringify(obj))
+      } else {
+        localStorage.setItem(`settings_${name}`, `{"searchText": "${text}", "shortSwich": ${false}}`)
+      }
+    }
+    setSearchText(text)
   }
 
-  const handleLogin = () => {
-    setIsLogged(true);
-    navigate("/", {replace: true});
-  }
+  useEffect(() => {
+    if(!localStorage.getItem("token") || localStorage.getItem("token") === ''){
+      setLogedId(false)
+    } 
+    else {
+      mainApi.getProfile()
+      .then(data=>{
+        if(data.message){
+          localStorage.removeItem("token")
+          setLogedId(false)
+          window.location.reload();
+        }
+      })
+      .catch(error => {
+        console.error('getProfile error ', error)
+      })
+    }
+  }, [])
 
-  const handleLogout = () => {
-    setIsLogged(false);
-    navigate("/signin", {replace: true});
-  }
 
   return (
-        <div className='App'>
+    <BrowserRouter>
+    
+     <CurrentUserContext.Provider value={{setSearchText, currentUser, setcurrentUser, logedId, setLogedId, saveMoviesStore, setSaveMoviesStore, cards, setCards, films, setFilms, findeSaveMoviesStore, setFindeSaveMoviesStore, openPopup}}>
+     <div className='App'>
           <Routes>
-            {/* по роуту / отображается страница «О проекте»; */}
-            <Route exact path="/" element={
-            <Layout isLogged={!isLogged}>
-              <Main />
-            </Layout>} />
 
-              {/* по роуту /movies отображается страница «Фильмы»; */}
-              <Route exact path="/Movies" 
-                element={
-                    <Layout isLogged={isLogged}>
-                      <Movies />
-                    </Layout>
-                }
-              />
-  
-              {/* по роуту /saved-movies отображается страница «Сохранённые фильмы»; */}
-              <Route exact path="/saved-movies" 
-                element={
-                  <Layout isLogged={isLogged}>
-                    <SavedMovies />
-                  </Layout>
-              }
-              />
+               <Route exact path="/" element={
+               <Layout isLogged={logedId}>
+               <Main/>
+               </Layout>} />
 
-              <Route exact path="/profile" 
+               <Route exact path="/signup" 
+     
                 element={
-                  <>
-                    <Header isLogged={isLogged}/>
-                    <Profile onLogout={handleLogout} />
-                  </>
-                }
+                  
+                  <ProtectedRoute logedId={!logedId}>
+                   <Register/>
+                  </ProtectedRoute>
+                 }
               />
 
             {/* по роутам /signin и /signup отображаются страницы авторизации и регистрации.     */}
             <Route exact path="/signin" 
+            
               element={
-                <Login onLogin={handleLogin}/>
-              } 
+                <ProtectedRoute logedId={!logedId}>
+                 <Login/>
+                </ProtectedRoute>
+               } 
+              />
+
+              {/* по роуту /movies отображается страница «Фильмы»; */}
+              <Route exact path="/movies" 
+              
+                element={
+                  <ProtectedRoute logedId={logedId}>
+                    <Layout isLogged={logedId}>
+                    <Movies searchText={searchText} searchHandler={searchHandler}/>
+                    </Layout>
+                  </ProtectedRoute>
+                 }
               />
   
-              <Route exact path="/signup" 
+              {/* по роуту /saved-movies отображается страница «Сохранённые фильмы»; */}
+              <Route exact path="/saved-movies" 
+            
+              element={
+                <ProtectedRoute logedId={logedId}>
+                  <Layout isLogged={logedId}>
+                  <SavedMovies searchText={searchText} searchHandler={searchHandler}/>
+                  </Layout>
+                </ProtectedRoute>
+               }
+              />
+
+              <Route exact path="/profile" 
+               
                 element={
-                  <Register onRegister={handleRegister} />
-                }
+                  <ProtectedRoute logedId={logedId}>
+                    
+                  <Layout isLogged={logedId}>
+                   <Profile/>
+                   </Layout>
+                  
+                  </ProtectedRoute>
+                 }
               />
 
               <Route exact path="*" element={<Error404/>} />
             </Routes>
-          </div>
+            <Popup popupOpen={popupOpen} popupMessage={popupMessage} closePopup={closePopup} />
+            </div>
+          </CurrentUserContext.Provider>
+           {/* <div className="preloader-wrapper">
+              <Preloader />
+            </div> */}
+            
+          </BrowserRouter>
     );
 }
 
