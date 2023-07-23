@@ -32,6 +32,7 @@ const Profile = () => {
 
   useEffect(() => {
     if((currentUser.name !== name || currentUser.email !== email)){
+      console.log(currentUser.name !== name)
       setIsSameValues(true)
     } else {
       setIsSameValues(false)
@@ -106,6 +107,7 @@ const Profile = () => {
             ? <button
                 type="submit"
                 className="profile__submit"
+                disabled={!isSameValues}
               >
                 Сохранить
               </button>

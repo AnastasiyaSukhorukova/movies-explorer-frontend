@@ -83,10 +83,9 @@ const MoviesCard = ({card, saveMoviesCards, deliteFilm}) => {
         className="card__link"
         rel="noreferrer"
       >
-        <img className="moviesCard__image" src={location.pathname === "/movies"
-              ? `${MOVIES_IMAGES_BASE_URL}/${card.image.url}`
-              : card.image}
-               alt={`Постер ${card.nameRU}`} />
+        <img className="moviesCard__image" src={src} alt={`Постер ${card.nameRU}`}
+               />
+               
         </a>
       <div className="moviesCard__container">
         <h2 className="moviesCard__title">

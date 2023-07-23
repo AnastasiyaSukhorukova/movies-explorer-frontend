@@ -84,7 +84,7 @@ function App() {
           <Routes>
 
                <Route exact path="/" element={
-               <Layout>
+               <Layout isLogged={logedId}>
                <Main/>
                </Layout>} />
 
